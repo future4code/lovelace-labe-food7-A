@@ -1,11 +1,22 @@
-import React from 'react';
+import { createGlobalStyle } from "styled-components";
+import Router from "./routes/Router";
+import React from "react";
 
 function App() {
   return (
-    <div>
-      <p>Oii</p>
-    </div>
+    <>
+      <GlobalStyle />
+      <Router />
+    </>
   );
 }
+
+const GlobalStyle = createGlobalStyle` 
+  * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+`;
 
 export default App;
