@@ -9,6 +9,7 @@ import Profile from "../pages/Profile";
 import Register from "../pages/Register";
 import RestaurantDetails from "../pages/RestaurantDetails";
 import Search from "../pages/Search";
+import ErrorPage from '../pages/ErrorPage'
 
 function Router() {
   return (
@@ -22,6 +23,7 @@ function Router() {
         <Route exact path="/register" component={Register} />
         <Route exact path="/restaurant/details" component={RestaurantDetails} />
         <Route exact path="/search" component={Search} />
+        <Route exact path="" component={ErrorPage}/>
       </Switch>
     </BrowserRouter>
   );
