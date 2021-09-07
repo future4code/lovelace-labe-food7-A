@@ -25,3 +25,15 @@ export const register = (body, clear) =>{
     })
 
 }
+
+export const addAdress = (body, clear ) =>{
+    axios.post(`${BASE_URL}/address`, body, headers) //falta o token para funcionar 
+    .then((res) =>{
+        console.log(res)
+        clear()
+    })
+    .catch((err) =>{
+        console.log(err.response.data)
+        alert('Erro no cadastro de endereço, tente de novo!!')
+    })
+}
