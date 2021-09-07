@@ -1,9 +1,10 @@
 import styled from 'styled-components';
+// import { Button } from '@material-ui/core';
 
 export const ContainerFormLogin = styled.div`
     display: flex;
     flex-direction: column;
-    width: 80vw;
+    width: 90vw;
     max-width: 450px;
     align-items: center;
     margin-bottom: 20px;
@@ -26,5 +27,9 @@ export const ScreenContainer = styled.div`
 export const SignUpButtonContainer =styled.div`
     width: 80vw;
     max-width: 450px;
+`
 
-` 
+// export const SignUpButton = styled(Button)`
+//     text-decoration: none;
+//     font-weight: 600;
+// `
