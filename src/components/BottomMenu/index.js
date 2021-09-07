@@ -6,6 +6,7 @@ import BottomNavigationAction from '@material-ui/core/BottomNavigationAction'
 import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
 import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 import PersonOutlineOutlinedIcon from '@material-ui/icons/PersonOutlineOutlined';
+import { useHistory } from 'react-router-dom'
 
 const useStyles = makeStyles({
   root: {
@@ -16,9 +17,19 @@ const useStyles = makeStyles({
 export default function BottomMenu() {
   const classes = useStyles()
   const [value, setValue] = React.useState('home')
+  const history = useHistory()
+
+  const goToPage = (value) => {
+    if (value === 'home') {
+      history.push('/')
+    } else {
+      history.push(`/${value}`)
+    }
+  }
 
   const handleChange = (event, newValue) => {
     setValue(newValue)
+    goToPage(newValue)
   }
 
   return (

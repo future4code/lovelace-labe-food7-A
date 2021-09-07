@@ -2,70 +2,74 @@ import React from "react"
 import { ContainerMenu } from "./styles"
 import { Button } from "@material-ui/core"
 
-export default function MenuBar() {
+export default function MenuBar(props) {
+
+  const handleClick = (category) => {
+    props.setCategory(category)
+  }
 
   return (
     <ContainerMenu>
 
       <Button
         size={'small'}
-        onClick={null}
+        onClick={() => handleClick('Árabe')}
       >
         Árabe
       </Button>
      
       <Button
         size={'small'}
-        onClick={null}
+        onClick={() => handleClick('Asiática')}
       >
         Asiática
       </Button>
 
       <Button
         size={'small'}
-        onClick={null}
+        onClick={() => handleClick('Hamburguer')}
       >
         Hamburger
       </Button>
 
       <Button
         size={'small'}
-        onClick={null}
+        onClick={() => handleClick('Italiana')}
       >
         Italiana
       </Button>
 
       <Button
         size={'small'}
-        onClick={null}
+        onClick={() => handleClick('Sorvetes')}
       >
         Sorvetes
       </Button>
 
       <Button
         size={'small'}
-        onClick={null}
+        onClick={() => handleClick('Carnes')}
       >
         Carnes
       </Button>
 
       <Button
         size={'small'}
-        onClick={null}
+        onClick={() => handleClick('Baiana')}
       >
         Baiana
       </Button>
 
       <Button
         size={'small'}
-        onClick={null}
+        onClick={() => handleClick('Petiscos')}
       >
         Petiscos
       </Button>
 
       <Button
         size={'small'}
-        onClick={null}
+        onClick={() => handleClick('Mexicana')}
       >
         Mexicana
       </Button>

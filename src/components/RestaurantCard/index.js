@@ -2,6 +2,7 @@ import React from "react"
 import { Container, ContainerData, Name } from './styles'
 
 function RestaurantCard(props) {
+
   return (
     <Container>
       <img src={props.logoUrl} />
