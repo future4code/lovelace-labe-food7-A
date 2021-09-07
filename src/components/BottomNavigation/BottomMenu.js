@@ -1,6 +1,6 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-// import { StyledBottomNavigation } from './styles'
+import { StyledBottomNavigation } from './styles'
 import BottomNavigation from '@material-ui/core/BottomNavigation'
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction'
 import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
@@ -22,10 +22,10 @@ export default function BottomMenu() {
   }
 
   return (
-    <BottomNavigation value={value} onChange={handleChange} className={classes.root}>
+    <StyledBottomNavigation value={value} onChange={handleChange} className={classes.root}>
       <BottomNavigationAction value="home" icon={<HomeOutlinedIcon />} />
       <BottomNavigationAction value="cart" icon={<ShoppingCartOutlinedIcon />} />
       <BottomNavigationAction value="profile" icon={<PersonOutlineOutlinedIcon />} />
-    </BottomNavigation>
+    </StyledBottomNavigation>
   )
 }

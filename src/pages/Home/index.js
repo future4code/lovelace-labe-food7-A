@@ -25,11 +25,14 @@ function Home() {
     requests.getRestaurants()
   }, [])
 
-  const restaurantList = states.requests?.map(restaurant => {
+  const restaurantList = states.restaurants?.map(restaurant => {
     return (
-      <RestaurantCard 
-        id={restaurant.id}
-        
+      <RestaurantCard
+        key={restaurant.id}
+        name={restaurant.name}
+        deliveryTime={restaurant.deliveryTime}
+        shipping={restaurant.shipping}
+        logoUrl={restaurant.logoUrl}
       />
     )
   })
@@ -52,6 +55,7 @@ function Home() {
         }}
       />
       <MenuBar />
+      {restaurantList}
       <BottomMenu />
     </ScreenContainer>
   )

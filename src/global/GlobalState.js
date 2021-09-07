@@ -26,7 +26,7 @@ const GlobalState = (props) => {
 
     
 
-    const states = {  }
+    const states = { restaurants }
     const setters = {  }
     const requests = { getRestaurants }
 

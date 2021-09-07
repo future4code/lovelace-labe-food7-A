@@ -12,6 +12,6 @@ export const ContainerMenu = styled.div`
     }
 
     > :first-child {
-        margin-right: 0;
+        margin-right: -8px;
     }
 `
