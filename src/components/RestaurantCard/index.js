@@ -1,11 +1,18 @@
-import React from "react";
+import React from "react"
+import { Container, ContainerData, Name } from './styles'
 
-function RestaurantCard() {
+function RestaurantCard(props) {
+
   return (
-    <div>
-      <p>Card do restaurante</p>
-    </div>
-  );
+    <Container>
+      <img src={props.logoUrl} />
+      <Name>{props.name}</Name>
+      <ContainerData>
+        <p>{props.deliveryTime} min</p>
+        <p>Frete: R${props.shipping}</p>
+      </ContainerData>
+    </Container>
+  )
 }
 
-export default RestaurantCard;
+export default RestaurantCard
