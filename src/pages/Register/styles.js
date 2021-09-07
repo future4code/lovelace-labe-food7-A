@@ -1,29 +1,31 @@
-import styled from 'styled-components';
+import styled from "styled-components";
+import { Logo } from "../Login/styles";
 
 export const ContainerFormRegister = styled.div`
-    display: flex;
-    flex-direction: column;
-    width: 80vw;
-    max-width: 450px;
-    align-items: center;
-    margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  max-width: 450px;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 0 15px;
 
-    button{
-        margin-top:10px;
-    }
-
-` 
+  button {
+    margin-top: 10px;
+  }
+`;
 export const ScreenContainerRegister = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100vw;
-    margin-top:10vh;
-
-`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
 export const SignUpButtonContainer = styled.div`
-     width: 80vw;
-    max-width: 450px;
+  max-width: 450px;
+`;
+export const Title = styled.p`
+  padding: 12px;
+`;
 
-` 
+export const LogoRappi = styled(Logo)`
+  margin: 20px;
+`;
