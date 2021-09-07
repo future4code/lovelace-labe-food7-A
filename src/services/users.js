@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { BASE_URL } from '../constants/url';
+import { BASE_URL } from '../constants/urls';
 import { headers } from '../constants/authorization';
 
 export const login = (body, clear) => {
