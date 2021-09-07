@@ -1,32 +1,42 @@
 import React from "react";
-import { useHistory } from 'react-router';
-import FormRegister from '../Register/formRegister';
-import {ScreenContainerRegister, SignUpButtonContainer} from './styles';
-import { Button } from '@material-ui/core';
+import { useHistory } from "react-router";
+import FormRegister from "../Register/formRegister";
+import {
+  ScreenContainerRegister,
+  SignUpButtonContainer,
+  Title,
+  LogoRappi,
+} from "./styles";
+import { Button } from "@material-ui/core";
+import Rappi4 from "../../images/logo-future-eats-invert.svg";
+import Header from "../../components/Header";
+import useProtectedPage from '../../hooks/useProtectedPage';
 
 const Register = () => {
-  const history = useHistory()
+  useProtectedPage()
+  const history = useHistory();
 
-  const goToLogin = () =>{
-    history.push('/login')
-  }
+  const goToLogin = () => {
+    history.push("/login");
+  };
 
   return (
     <ScreenContainerRegister>
-        <h1>Tela de cadastro</h1>
+      <Header />
+      <LogoRappi src={Rappi4} />
+      <Title> Cadastrar </Title>
       <FormRegister />
       <SignUpButtonContainer>
         <Button
-        onClick={goToLogin}
-        fullWidth
-        variant={'text'}
-        color={'neutralColor'}
-        type={'submit'}
-        >
-      </Button>
+          onClick={goToLogin}
+          fullWidth
+          variant={"text"}
+          color={"neutralColor"}
+          type={"submit"}
+        ></Button>
       </SignUpButtonContainer>
     </ScreenContainerRegister>
   );
-}
+};
 
 export default Register;

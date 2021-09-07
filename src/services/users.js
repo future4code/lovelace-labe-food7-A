@@ -1,23 +1,24 @@
-import axios from 'axios';
-import {BASE_URL} from '../constants/url';
-import {headers} from '../constants/autorization';
+import axios from "axios";
+import { BASE_URL } from "../constants/urls";
+import { headers } from "../constants/authorization";
 
-export const login = (body, clear) =>{
-    axios.post(`${BASE_URL}/login`,body, headers)
-    .then((res) =>{
-        console.log(res)
-        clear()
+export const login = (body, clear) => {
+  axios
+    .post(`${BASE_URL}/login`, body, headers)
+    .then((res) => {
+      localStorage.setItem("tokenRappi4C", res.data.token);
+      console.log(res)
+      clear();
     })
-    .catch((err) => 
-    console.log(err.response.data))
-    alert('Usuário não encontrado!')
-}
+    .catch((err) => alert(err.response.data.errors));
+};
 
-export const register = (body, clear) =>{
-    axios.post(`${BASE_URL}/signup`, body, headers)
-    .then((res) =>{
-        console.log(res)
-        clear()
+export const register = (body, clear) => {
+  axios
+    .post(`${BASE_URL}/signup`, body, headers)
+    .then((res) => {
+      console.log(res);
+      clear();
     })
     .catch((err) =>{
         console.log(err.response.data)
@@ -27,13 +28,14 @@ export const register = (body, clear) =>{
 }
 
 export const addAdress = (body, clear ) =>{
-    axios.post(`${BASE_URL}/address`, body, headers) //falta o token para funcionar 
+    axios.put(`${BASE_URL}/address`, body, headers) 
     .then((res) =>{
+      localStorage.setItem("tokenRappi4C", res.data.token);
         console.log(res)
         clear()
     })
     .catch((err) =>{
         console.log(err.response.data)
-        alert('Erro no cadastro de endereço, tente de novo!!')
+        alert('Erro no cadastro de endereço, tente novamente!!')
     })
 }
