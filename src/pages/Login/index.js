@@ -1,30 +1,25 @@
 import React from "react";
-import { Button } from '@material-ui/core';
-import { useHistory } from 'react-router';
-import { ScreenContainer, SignUpButtonContainer, SignUpButton } from './styles';
-import FormLogin from '../Login/formLogin'
-
+import { useHistory } from "react-router";
+import { ScreenContainer, SignUpButton, Logo, Title } from "./styles";
+import FormLogin from "../Login/formLogin";
+import Rappi4 from "../../images/logo-future-eats-invert.svg";
 
 function Login() {
-  
-  const history = useHistory()
+  const history = useHistory();
+
+  const goToRegister = () => {
+    history.push("/register");
+  };
 
   return (
     <ScreenContainer>
-      <h1>Login</h1>
+      <Logo src={Rappi4} />
+      <Title>Entrar</Title>
       <FormLogin />
-      <SignUpButtonContainer>
-        <Button
-          // onClick={}
-          fullWidth
-          variant={'text'}
-          // color={'primary'}
-          type={'submit'}
-          size={'small'}
-        >
-          Não possui cadastro? Clique aqui!!
-        </Button>
-      </SignUpButtonContainer>
+
+      <SignUpButton onClick={goToRegister} fullWidth>
+        Não possui cadastro? Clique aqui.
+      </SignUpButton>
     </ScreenContainer>
   );
 }
