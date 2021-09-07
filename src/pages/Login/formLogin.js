@@ -16,18 +16,18 @@ const FormLogin = () => {
     showPassword: false,
   });
 
+  const onSubmitFormLogin = (event) => {
+    event.preventDefault();
+    login(form, clear);
+    console.log(login);
+  };
+
   const handleClickShowPassword = () => {
     setValues({ ...values, showPassword: !values.showPassword });
   };
 
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
-  };
-
-  const onSubmitFormLogin = (event) => {
-    event.preventDefault();
-    login(form, clear);
-    console.log();
   };
 
   return (
