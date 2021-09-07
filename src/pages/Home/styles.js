@@ -7,6 +7,7 @@ export const ScreenContainer = styled.div`
     width: 90%;
     align-items: center;
     margin: 30px auto;
+    min-height: 100vh
 `
 
 export const Divider = styled.hr`

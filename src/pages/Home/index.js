@@ -1,11 +1,11 @@
-import React, { useContext, useEffect } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { Divider, ScreenContainer } from './styles'
 import { makeStyles } from '@material-ui/core/styles';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import TextField from '@material-ui/core/TextField';
 import SearchIcon from '@material-ui/icons/Search';
 import MenuBar from "../../components/MenuBar";
-import BottomMenu from "../../components/BottomNavigation/BottomMenu";
+import BottomMenu from "../../components/BottomMenu/index";
 import GlobalContext from "../../global/GlobalContext";
 import RestaurantCard from '../../components/RestaurantCard/index'
 
@@ -19,20 +19,38 @@ function Home() {
 
   const classes = useStyles()
 
-  const { states, setters, requests } = useContext(GlobalContext)
+  const { states, requests } = useContext(GlobalContext)
+
+  const [category, setCategory] = useState('')
 
   useEffect(() => {
     requests.getRestaurants()
   }, [])
 
-  const restaurantList = states.requests?.map(restaurant => {
+  const filteredList = states.restaurants?.filter(restaurant => {
+    if (restaurant.category === category) {
+      return true
+    } else if (category === '') {
+      return true
+    } else {
+      return false
+    }
+    
+  })
+
+  const restaurantList = filteredList?.map(restaurant => {
     return (
-      <RestaurantCard 
-        id={restaurant.id}
-        
+      <RestaurantCard
+        key={restaurant.id}
+        name={restaurant.name}
+        deliveryTime={restaurant.deliveryTime}
+        shipping={restaurant.shipping}
+        logoUrl={restaurant.logoUrl}
+        onClick={null}
       />
     )
   })
+
 
   return (
     <ScreenContainer>
@@ -51,7 +69,8 @@ function Home() {
           )
         }}
       />
-      <MenuBar />
+      <MenuBar setCategory={setCategory} />
+      {restaurantList}
       <BottomMenu />
     </ScreenContainer>
   )
