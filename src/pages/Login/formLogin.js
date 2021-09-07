@@ -11,7 +11,7 @@ const FormLogin = () => {
     const onSubmitFormLogin= (event) =>{
         event.preventDefault()
         login(form, clear)
-        console.log()
+        console.log(login)
     }
 
     return(

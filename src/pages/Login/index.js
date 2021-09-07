@@ -6,6 +6,10 @@ import FormLogin from '../Login/formLogin'
 
 function Login() {
   const history = useHistory()
+
+  const goToRegister = () =>{
+    history.push('/register')
+  }
    
 
   return (
@@ -14,7 +18,7 @@ function Login() {
       <FormLogin />
       <SignUpButtonContainer>
         <Button
-          // onClick={}
+           onClick={goToRegister}
           fullWidth
           variant={'text'}
           color={'neutralColor'}

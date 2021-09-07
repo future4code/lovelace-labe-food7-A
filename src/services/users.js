@@ -5,8 +5,23 @@ import {headers} from '../constants/autorization';
 export const login = (body, clear) =>{
     axios.post(`${BASE_URL}/login`,body, headers)
     .then((res) =>{
-        localStorage.setItem('token', res.data.token)
+        console.log(res)
         clear()
     })
-    .catch((err) => alert(err.response.data.errors))
+    .catch((err) => 
+    console.log(err.response.data))
+    alert('Usuário não encontrado!')
+}
+
+export const register = (body, clear) =>{
+    axios.post(`${BASE_URL}/signup`, body, headers)
+    .then((res) =>{
+        console.log(res)
+        clear()
+    })
+    .catch((err) =>{
+        console.log(err.response.data)
+        alert('Registro não Efetuado, tente de novo!!')
+    })
+
 }
