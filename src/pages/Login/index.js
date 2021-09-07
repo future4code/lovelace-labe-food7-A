@@ -17,11 +17,11 @@ function Login() {
           // onClick={}
           fullWidth
           variant={'text'}
-          color={'neutralColor'}
+          // color={'primary'}
           type={'submit'}
           size={'small'}
         >
-          Não possui cadastro ? Clique aqui!!
+          Não possui cadastro? Clique aqui!!
         </Button>
       </SignUpButtonContainer>
     </ScreenContainer>

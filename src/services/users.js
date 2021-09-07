@@ -5,7 +5,7 @@ import { headers } from '../constants/authorization';
 export const login = (body, clear) => {
     axios.post(`${BASE_URL}/login`, body, headers)
         .then((res) => {
-            localStorage.setItem('token', res.data.token)
+            localStorage.setItem('tokenRappi4C', res.data.token)
             clear()
         })
         .catch((err) => alert(err.response.data.errors))
