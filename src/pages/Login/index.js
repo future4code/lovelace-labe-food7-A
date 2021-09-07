@@ -1,12 +1,13 @@
 import React from "react";
 import { Button } from '@material-ui/core';
 import { useHistory } from 'react-router';
-import {ScreenContainer, SignUpButtonContainer} from './styles';
+import { ScreenContainer, SignUpButtonContainer, SignUpButton } from './styles';
 import FormLogin from '../Login/formLogin'
 
+
 function Login() {
+  
   const history = useHistory()
-   
 
   return (
     <ScreenContainer>
@@ -17,10 +18,11 @@ function Login() {
           // onClick={}
           fullWidth
           variant={'text'}
-          color={'neutralColor'}
+          // color={'primary'}
           type={'submit'}
+          size={'small'}
         >
-        Não possui cadastro ? Clique aqui!!
+          Não possui cadastro? Clique aqui!!
         </Button>
       </SignUpButtonContainer>
     </ScreenContainer>
