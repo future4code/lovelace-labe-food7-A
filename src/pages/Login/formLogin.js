@@ -1,93 +1,93 @@
 import React, { useState } from "react";
-import useForm from '../../hooks/useForm';
-import TextField from '@material-ui/core/TextField';
-import { Button } from '@material-ui/core';
+import useForm from "../../hooks/useForm";
+import TextField from "@material-ui/core/TextField";
+import { Button } from "@material-ui/core";
 import { login } from "../../services/users";
-import { ContainerFormLogin } from './styles';
-import Visibility from '@material-ui/icons/Visibility';
-import VisibilityOff from '@material-ui/icons/VisibilityOff';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import IconButton from '@material-ui/core/IconButton';
+import { ContainerFormLogin } from "./styles";
+import Visibility from "@material-ui/icons/Visibility";
+import VisibilityOff from "@material-ui/icons/VisibilityOff";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import IconButton from "@material-ui/core/IconButton";
 
 const FormLogin = () => {
+  const [form, onChange, clear] = useForm({ email: "", password: "" });
 
-    const [form, onChange, clear] = useForm({ email: '', password: '' })
+  const [values, setValues] = useState({
+    showPassword: false,
+  });
 
-    const [values, setValues] = useState({
-        showPassword: false,
-    })
+  const handleClickShowPassword = () => {
+    setValues({ ...values, showPassword: !values.showPassword });
+  };
 
-    const handleClickShowPassword = () => {
-        setValues({ ...values, showPassword: !values.showPassword })
-    }
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
 
-    const handleMouseDownPassword = (event) => {
-        event.preventDefault()
-    }
+  const onSubmitFormLogin = (event) => {
+    event.preventDefault();
+    login(form, clear);
+    console.log();
+  };
 
-    const onSubmitFormLogin = (event) => {
-        event.preventDefault()
-        login(form, clear)
-        console.log()
-    }
-
-    return (
-        <ContainerFormLogin>
-            <form onSubmit={onSubmitFormLogin}>
-                <TextField
-                    name={'email'}
-                    value={form.email}
-                    onChange={onChange}
-                    label={'Email'}
-                    placeholder={'email@email.com'}
-                    variant={'outlined'}
-                    fullWidth
-                    margin={'normal'}
-                    required
-                    type={'email'}
-                    InputLabelProps={{
-                        shrink: true,
-                    }}
-                />
-                <TextField
-                    name={'password'}
-                    value={form.password}
-                    onChange={onChange}
-                    label={'Senha'}
-                    placeholder={'Mínimo 6 caracteres'}
-                    variant={'outlined'}
-                    fullWidth
-                    margin={'normal'}
-                    required
-                    type={values.showPassword ? 'text' : 'password'}
-                    InputLabelProps={{
-                        shrink: true,
-                    }}
-                    InputProps={{
-                        endAdornment:
-                            <InputAdornment position="end">
-                                <IconButton
-                                    aria-label="toggle password visibility"
-                                    onClick={handleClickShowPassword}
-                                    onMouseDown={handleMouseDownPassword}
-                                    edge="end"
-                                >
-                                    {values.showPassword ? <Visibility /> : <VisibilityOff />}
-                                </IconButton>
-                            </InputAdornment>
-                    }}
-                />
-                <Button
-                    fullWidth
-                    variant={'contained'}
-                    color={'primary'}
-                    type={'submit'}
+  return (
+    <ContainerFormLogin>
+      <form onSubmit={onSubmitFormLogin}>
+        <TextField
+          name={"email"}
+          value={form.email}
+          onChange={onChange}
+          label={"Email"}
+          placeholder={"email@email.com"}
+          variant={"outlined"}
+          fullWidth
+          margin={"normal"}
+          required
+          type={"email"}
+          InputLabelProps={{
+            shrink: true,
+          }}
+        />
+        <TextField
+          name={"password"}
+          value={form.password}
+          onChange={onChange}
+          label={"Senha"}
+          placeholder={"Mínimo 6 caracteres"}
+          variant={"outlined"}
+          fullWidth
+          margin={"normal"}
+          required
+          type={values.showPassword ? "text" : "password"}
+          InputLabelProps={{
+            shrink: true,
+          }}
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={handleClickShowPassword}
+                  onMouseDown={handleMouseDownPassword}
+                  edge="end"
                 >
-                    Entrar
-                </Button>
-            </form>
-        </ContainerFormLogin>
-    )
-}
+                  {values.showPassword ? <Visibility /> : <VisibilityOff />}
+                </IconButton>
+              </InputAdornment>
+            ),
+          }}
+        />
+        <Button
+          fullWidth
+          variant={"contained"}
+          color={"primary"}
+          type={"submit"}
+        >
+          Entrar
+        </Button>
+      </form>
+    </ContainerFormLogin>
+  );
+};
 
 export default FormLogin;
