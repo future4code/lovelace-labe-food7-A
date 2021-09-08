@@ -20,7 +20,7 @@ const FormLogin = () => {
 
   const onSubmitFormLogin = (event) => {
     event.preventDefault();
-    login(form, clear);
+    login(form, clear, history);
     console.log(login);
   };
 
@@ -32,9 +32,9 @@ const FormLogin = () => {
     event.preventDefault();
   };
 
-  const goToAddressForm = () => {
-    history.push("/address/form");
-  };
+  // const goToAddressForm = () => {
+  //   history.push("/address/form");
+  // };
 
   return (
     <ContainerFormLogin>
@@ -88,7 +88,6 @@ const FormLogin = () => {
           variant={"contained"}
           color={"primary"}
           type={"submit"}
-          onClick={goToAddressForm}
         >
           Entrar
         </Button>

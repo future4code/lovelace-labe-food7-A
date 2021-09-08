@@ -2,15 +2,23 @@ import axios from "axios";
 import { BASE_URL } from "../constants/urls";
 import { headers } from "../constants/authorization";
 
-export const login = (body, clear) => {
+export const login = (body, clear, history) => {
   axios
     .post(`${BASE_URL}/login`, body, headers)
     .then((res) => {
       localStorage.setItem("tokenRappi4C", res.data.token);
+      if (res.data.user.hasAddress){
+        history.push("/")
+      } else {
+        history.push("/address/form")
+      }
       console.log(res)
       clear();
     })
-    .catch((err) => alert(err.response.data.errors));
+    .catch((err) => {
+      alert(err.response.data.message)
+      clear()
+    })  
 };
 
 export const register = (body, clear) => {
