@@ -1,11 +1,21 @@
 import React from "react";
 import useProtectedPage from "../../hooks/useProtectedPage";
+import Header from '../../components/Header/index'
+import { ContainerCards, ScreenContainer } from "./styles";
+import BottomMenu from "../../components/BottomMenu";
+
 
 function Profile() {
   useProtectedPage()
   return (
     <div>
-      <p>Tela com o perfil e histórico de pedidos</p>
+      <Header title='Meu perfil' />
+      <ScreenContainer>
+        <ContainerCards>
+
+        </ContainerCards>
+        <BottomMenu initialValue='profile' />
+      </ScreenContainer>
     </div>
   );
 }

@@ -83,7 +83,9 @@ function Home() {
       <ContainerCards>
         {restaurantList}
       </ContainerCards>
-      <BottomMenu clearCategory={setCategory} />
+      <BottomMenu 
+        clearCategory={setCategory}
+        initialValue='home' />
     </ScreenContainer>
   );
 }

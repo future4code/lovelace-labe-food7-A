@@ -5,7 +5,7 @@ export const ScreenContainer = styled.div`
   flex-direction: column;
   width: 90%;
   align-items: center;
-  margin: 30px auto 0 auto;
+  margin: 15px auto 0 auto;
   min-height: 100vh;
 `;
 
