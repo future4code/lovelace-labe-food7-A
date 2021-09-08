@@ -3,7 +3,7 @@ import { Container, ContainerData, Name } from "./styles";
 
 function RestaurantCard(props) {
   return (
-    <Container>
+    <Container onClick={props.onClick}>
       <img src={props.logoUrl} alt="Imagem do restaurante" />
       <Name>{props.name}</Name>
       <ContainerData>
