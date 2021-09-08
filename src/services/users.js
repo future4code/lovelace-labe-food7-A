@@ -7,18 +7,17 @@ export const login = (body, clear, history) => {
     .post(`${BASE_URL}/login`, body, headers)
     .then((res) => {
       localStorage.setItem("tokenRappi4C", res.data.token);
-      if (res.data.user.hasAddress){
-        history.push("/")
+      if (res.data.user.hasAddress) {
+        history.push("/");
       } else {
-        history.push("/address/form")
+        history.push("/address/form");
       }
-      console.log(res)
       clear();
     })
     .catch((err) => {
-      alert(err.response.data.message)
-      clear()
-    })  
+      alert(err.response.data.message);
+      clear();
+    });
 };
 
 export const register = (body, clear) => {
@@ -28,22 +27,22 @@ export const register = (body, clear) => {
       console.log(res);
       clear();
     })
-    .catch((err) =>{
-        console.log(err.response.data)
-        alert('Registro não Efetuado, tente de novo!!')
-    })
+    .catch((err) => {
+      console.log(err.response.data);
+      alert("Registro não Efetuado, tente de novo!!");
+    });
+};
 
-}
-
-export const addAdress = (body, clear ) =>{
-    axios.put(`${BASE_URL}/address`, body, headers) 
-    .then((res) =>{
+export const addAdress = (body, clear) => {
+  axios
+    .put(`${BASE_URL}/address`, body, headers)
+    .then((res) => {
       localStorage.setItem("tokenRappi4C", res.data.token);
-        console.log(res)
-        clear()
+      console.log(res);
+      clear();
     })
-    .catch((err) =>{
-        console.log(err.response.data)
-        alert('Erro no cadastro de endereço, tente novamente!!')
-    })
-}
+    .catch((err) => {
+      console.log(err.response.data);
+      alert("Erro no cadastro de endereço, tente novamente!!");
+    });
+};
