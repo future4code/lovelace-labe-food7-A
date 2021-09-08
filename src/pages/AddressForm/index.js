@@ -7,8 +7,7 @@ import useProtectedPage from "../../hooks/useProtectedPage";
 
 const AddresForm = () => {
   useProtectedPage();
-
-  const history = useHistory();
+  const history = useHistory()
 
   return (
     <ScreenAddressForm>

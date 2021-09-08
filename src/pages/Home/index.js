@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Home() {
-  // useProtectedPage();
+  useProtectedPage()
   const history = useHistory();
   const classes = useStyles();
 
