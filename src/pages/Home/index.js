@@ -32,7 +32,7 @@ function Home() {
   }, []);
 
   const filteredList = states.restaurants?.filter((nameRest) => {
-    if (nameRest.name.toLowerCase().startsWith(search)) {
+    if (nameRest.name.toLowerCase().includes(search.toLowerCase()))  {
       if (nameRest.category === category) {
         return true;
       } else if (category === "") {
