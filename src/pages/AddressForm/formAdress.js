@@ -4,6 +4,7 @@ import useForm from "../../hooks/useForm";
 import { addAdress } from "../../services/users";
 import { ContainerFormAdress } from "./styles";
 import { Button } from "@material-ui/core";
+import { useHistory } from "react-router";
 
 const FormAdress = () => {
   const [form, onChange, clear] = useForm({
@@ -15,9 +16,10 @@ const FormAdress = () => {
     complement: "",
   });
 
+  const history = useHistory();
   const onSubmitFormAdress = (event) => {
     event.preventDefault();
-    addAdress(form, clear);
+    addAdress(form, clear, history);
     console.log(addAdress);
   };
 
