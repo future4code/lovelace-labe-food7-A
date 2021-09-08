@@ -8,9 +8,11 @@ import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import IconButton from "@material-ui/core/IconButton";
+import { useHistory } from "react-router";
 
 const FormLogin = () => {
   const [form, onChange, clear] = useForm({ email: "", password: "" });
+  const history = useHistory();
 
   const [values, setValues] = useState({
     showPassword: false,
@@ -28,6 +30,10 @@ const FormLogin = () => {
 
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
+  };
+
+  const goToAddressForm = () => {
+    history.push("/address/form");
   };
 
   return (
@@ -82,6 +88,7 @@ const FormLogin = () => {
           variant={"contained"}
           color={"primary"}
           type={"submit"}
+          onClick={goToAddressForm}
         >
           Entrar
         </Button>

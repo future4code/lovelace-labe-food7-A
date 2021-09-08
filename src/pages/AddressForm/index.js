@@ -1,10 +1,21 @@
 import React from "react";
+import { useHistory } from "react-router";
+// import useUnprotectedPage from '../../hooks/useUnprotectedPage';
+import FormAdress from "./formAdress";
+import {ScreenAddressForm, Logo, Title} from './styles';
+import Rappi4 from "../../images/logo-future-eats-invert.svg";
 
-function AddresForm() {
+const AddresForm = () => {
+  // useUnprotectedPage()
+  const history = useHistory()
+
+
   return (
-    <div>
-      <p>Tela de cadastro do endereço</p>
-    </div>
+    <ScreenAddressForm>
+      <Logo src={Rappi4} />
+       <Title>Cadastro de Endereço</Title>
+      <FormAdress />
+    </ScreenAddressForm>
   );
 }
 

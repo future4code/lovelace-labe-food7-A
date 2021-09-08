@@ -10,8 +10,10 @@ import {
 import { Button } from "@material-ui/core";
 import Rappi4 from "../../images/logo-future-eats-invert.svg";
 import Header from "../../components/Header";
+import useProtectedPage from '../../hooks/useProtectedPage';
 
 const Register = () => {
+  useProtectedPage()
   const history = useHistory();
 
   const goToLogin = () => {

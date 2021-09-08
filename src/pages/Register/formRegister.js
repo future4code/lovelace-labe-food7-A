@@ -115,7 +115,7 @@ const FormRegister = () => {
           value={form.password}
           onChange={onChange}
           placeholder={"Confirme a senha anterior"}
-          label={"Senha"}
+          label={"Confirmar"}
           variant={"outlined"}
           fullWidth
           margin={"normal"}
