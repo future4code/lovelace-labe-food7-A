@@ -16,23 +16,35 @@ const FormRegister = () => {
     password: "",
   });
 
+  const [passwordConfirmation, onChangeConfirmPassword] = useForm({
+    confirmPassword: "",
+  });
+
   const history = useHistory();
   const [values, setValues] = useState({
     showPassword: false,
+    showConfirmation: false,
   });
+
+  const onSubmitFormRegister = (event) => {
+    event.preventDefault();
+    if (form.password !== passwordConfirmation.confirmPassword) {
+      alert("As senhas são diferentes");
+    } else {
+      register(form, clear, history);
+    }
+  };
 
   const handleClickShowPassword = () => {
     setValues({ ...values, showPassword: !values.showPassword });
   };
 
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
+  const handleClickConfirmationPassword = () => {
+    setValues({ ...values, showConfirmation: !values.showConfirmation });
   };
 
-  const onSubmitFormRegister = (event) => {
+  const handleMouseDownPassword = (event) => {
     event.preventDefault();
-    register(form, clear, history);
-    console.log(register);
   };
 
   return (
@@ -93,7 +105,7 @@ const FormRegister = () => {
           fullWidth
           margin={"normal"}
           required
-          type={"password"}
+          type={values.showPassword ? "text" : "password"}
           InputLabelProps={{
             shrink: true,
           }}
@@ -113,16 +125,16 @@ const FormRegister = () => {
           }}
         />
         <TextField
-          name={"password"}
-          value={form.password}
-          onChange={onChange}
+          name={"confirmPassword"}
+          value={passwordConfirmation.confirmPassword}
+          onChange={onChangeConfirmPassword}
           placeholder={"Confirme a senha anterior"}
           label={"Confirmar"}
           variant={"outlined"}
           fullWidth
           margin={"normal"}
           required
-          type={"password"}
+          type={values.showConfirmation ? "text" : "password"}
           InputLabelProps={{
             shrink: true,
           }}
@@ -131,11 +143,11 @@ const FormRegister = () => {
               <InputAdornment position="end">
                 <IconButton
                   aria-label="toggle password visibility"
-                  onClick={handleClickShowPassword}
+                  onClick={handleClickConfirmationPassword}
                   onMouseDown={handleMouseDownPassword}
                   edge="end"
                 >
-                  {values.showPassword ? <Visibility /> : <VisibilityOff />}
+                  {values.showConfirmation ? <Visibility /> : <VisibilityOff />}
                 </IconButton>
               </InputAdornment>
             ),
