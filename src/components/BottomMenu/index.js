@@ -14,7 +14,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function BottomMenu() {
+export default function BottomMenu({ className }) {
   const classes = useStyles();
   const [value, setValue] = React.useState("home");
   const history = useHistory();
@@ -36,7 +36,7 @@ export default function BottomMenu() {
     <StyledBottomNavigation
       value={value}
       onChange={handleChange}
-      className={classes.root}
+      className={`${className} ${classes.root}`}
     >
       <BottomNavigationAction value="home" icon={<HomeOutlinedIcon />} />
       <BottomNavigationAction

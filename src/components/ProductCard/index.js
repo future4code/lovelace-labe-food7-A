@@ -1,4 +1,6 @@
-import React from "react";
+import { SettingsOverscanSharp } from "@material-ui/icons";
+import React, { useContext } from "react";
+import GlobalContext from "../../global/GlobalContext";
 
 import {
   Container,
@@ -12,6 +14,7 @@ import {
 } from "./styles";
 
 function ProductCard({ image, name, ingredients, price }) {
+  const { states, setters, requests } = useContext(GlobalContext);
   return (
     <Container>
       <Image src={image} />
@@ -20,7 +23,7 @@ function ProductCard({ image, name, ingredients, price }) {
         <Amount>3</Amount>
         <Ingredients>{ingredients}</Ingredients>
         <Price>R${price}</Price>
-        <Button>adicionar</Button>
+        <Button onClick={setters.addToCart()}>adicionar</Button>
       </TextContainer>
     </Container>
   );
