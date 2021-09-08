@@ -74,7 +74,7 @@ function Home() {
       />
       <MenuBar setCategory={setCategory} />
       {restaurantList}
-      <BottomMenu />
+      <BottomMenu clearCategory={setCategory}/>
     </ScreenContainer>
   );
 }
