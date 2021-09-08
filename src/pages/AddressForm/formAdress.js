@@ -29,6 +29,9 @@ const FormAdress = () =>{
                  margin={"normal"}
                  required
                  type={"street"}
+                 InputLabelProps={{
+                    shrink: true,
+                }}
                 />
                 <TextField 
                  name={"number"}
@@ -41,6 +44,9 @@ const FormAdress = () =>{
                  margin={"normal"}
                  required
                  type={"number"}
+                 InputLabelProps={{
+                    shrink: true,
+                }}
                 />
                   <TextField 
                  name={"complement"}
@@ -53,6 +59,9 @@ const FormAdress = () =>{
                  margin={"normal"}
                  required
                  type={"complement"}
+                 InputLabelProps={{
+                    shrink: true,
+                }}
                 />
                 <TextField 
                  name={"neighbourhood"}
@@ -65,6 +74,9 @@ const FormAdress = () =>{
                  margin={"normal"}
                  required
                  type={"neighbourhood"}
+                 InputLabelProps={{
+                    shrink: true,
+                }}
                 />
                 <TextField 
                  name={"city"}
@@ -77,6 +89,9 @@ const FormAdress = () =>{
                  margin={"normal"}
                  required
                  type={"city"}
+                 InputLabelProps={{
+                    shrink: true,
+                }}
                 />
                 <TextField 
                  name={"state"}
@@ -89,6 +104,9 @@ const FormAdress = () =>{
                  margin={"normal"}
                  required
                  type={"state"}
+                 InputLabelProps={{
+                    shrink: true,
+                }}
                 />
                <Button
                 fullWidth
