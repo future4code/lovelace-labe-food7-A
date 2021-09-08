@@ -29,11 +29,17 @@ import {
 
 function Cart(props) {
   const {
-    states: { restaurant },
-    // setters: { setRestaurant },
-    // requests: { getRestaurant },
+    states: { restaurant, cart },
   } = useContext(GlobalContext);
   useProtectedPage();
+
+  const renderCartItems = () => {
+    if (cart.length === 0) {
+      return <p>carrinho vazio</p>;
+    }
+    return cart.map((item) => <ProductCard key={item.id} product={item} />);
+  };
+
   return (
     <>
       <Container>
@@ -51,15 +57,7 @@ function Cart(props) {
           </RestaurantAddress>
           <Delivery>30 - 45 min</Delivery>
 
-          <ProductsContainer>
-            {/* <ProductCard
-            // key={restaurant.id}
-            image={restaurant.photoUrl}
-            name={restaurant.name}
-            ingredients={restaurant.description}
-            price={restaurant.price}
-          /> */}
-          </ProductsContainer>
+          <ProductsContainer>{renderCartItems()}</ProductsContainer>
 
           <PricesContainer>
             <ShippingPrice>Frete R$ 6,00</ShippingPrice>

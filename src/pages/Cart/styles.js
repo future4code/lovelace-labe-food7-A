@@ -45,7 +45,9 @@ export const Delivery = styled.p`
   margin: 8px 16px;
 `;
 
-export const ProductsContainer = styled.div``;
+export const ProductsContainer = styled.div`
+  margin: 16px 16px 0 16px;
+`;
 
 export const PricesContainer = styled.div`
   display: flex;
