@@ -1,10 +1,8 @@
-import axios from "axios";
-import { BASE_URL } from "../constants/urls";
-import { headers } from "../constants/authorization";
+import api from "../config/api";
 
 export const login = (body, clear, history) => {
-  axios
-    .post(`${BASE_URL}/login`, body, headers)
+  api
+    .post("/login", body)
     .then((res) => {
       localStorage.setItem("tokenRappi4C", res.data.token);
       if (res.data.user.hasAddress) {
@@ -20,25 +18,27 @@ export const login = (body, clear, history) => {
     });
 };
 
-export const register = (body, clear) => {
-  axios
-    .post(`${BASE_URL}/signup`, body, headers)
+export const register = (body, clear, history) => {
+  api
+    .post("/signup", body)
     .then((res) => {
-      console.log(res);
+      localStorage.setItem("tokenRappi4C", res.data.token);
+      history.push("/address/form");
       clear();
     })
     .catch((err) => {
       console.log(err.response.data);
-      alert("Registro não Efetuado, tente de novo!!");
+      alert(err.response.data.message);
     });
 };
 
-export const addAdress = (body, clear) => {
-  axios
-    .put(`${BASE_URL}/address`, body, headers)
+export const addAdress = (body, clear, history) => {
+  api
+    .put("/address", body)
     .then((res) => {
       localStorage.setItem("tokenRappi4C", res.data.token);
       console.log(res);
+      history.push("/");
       clear();
     })
     .catch((err) => {

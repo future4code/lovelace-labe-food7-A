@@ -6,6 +6,7 @@ import { ContainerFormRegister } from "./styles";
 import { Button, IconButton, InputAdornment } from "@material-ui/core";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
+import { useHistory } from "react-router";
 
 const FormRegister = () => {
   const [form, onChange, clear] = useForm({
@@ -15,6 +16,7 @@ const FormRegister = () => {
     password: "",
   });
 
+  const history = useHistory();
   const [values, setValues] = useState({
     showPassword: false,
   });
@@ -29,7 +31,7 @@ const FormRegister = () => {
 
   const onSubmitFormRegister = (event) => {
     event.preventDefault();
-    register(form, clear);
+    register(form, clear, history);
     console.log(register);
   };
 

@@ -1,23 +1,14 @@
-import axios from "axios";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import GlobalContext from "./GlobalContext";
-import { BASE_URL } from "../constants/urls";
+import api from "../config/api";
 
 const GlobalState = (props) => {
   const [restaurant, setRestaurant] = useState();
   const [restaurants, setRestaurants] = useState([]);
 
-  const token = localStorage.getItem("tokenRappi4C");
-
-  const headers = {
-    headers: {
-      auth: token,
-    },
-  };
-
   const getRestaurants = () => {
-    axios
-      .get(`${BASE_URL}/restaurants`, headers)
+    api
+      .get("/restaurants")
       .then((res) => {
         setRestaurants(res.data.restaurants);
       })
@@ -27,7 +18,7 @@ const GlobalState = (props) => {
   };
 
   const getRestaurant = (id) => {
-    axios.get(`${BASE_URL}/restaurants/${id}`, headers).then(({ data }) => {
+    api.get(`/restaurants/${id}`).then(({ data }) => {
       setRestaurant(data.restaurant);
     });
   };
