@@ -2,9 +2,12 @@ import styled from "styled-components"
 
 export const ContainerMenu = styled.div`
     display: flex;
-    overflow: auto;
+    overflow: scroll;
     max-width: 100%;
-    /* overflow-x: hidden; */
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
     
     > Button {
         margin: 10px;

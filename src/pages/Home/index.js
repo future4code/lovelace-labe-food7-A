@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Divider, ScreenContainer } from "./styles";
+import { ContainerCards, Divider, ScreenContainer } from "./styles";
 import { makeStyles } from "@material-ui/core/styles";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import TextField from "@material-ui/core/TextField";
@@ -80,8 +80,10 @@ function Home() {
         }}
       />
       <MenuBar setCategory={setCategory} />
-      {restaurantList}
-      <BottomMenu clearCategory={setCategory}/>
+      <ContainerCards>
+        {restaurantList}
+      </ContainerCards>
+      <BottomMenu clearCategory={setCategory} />
     </ScreenContainer>
   );
 }

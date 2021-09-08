@@ -14,17 +14,10 @@ const useStyles = makeStyles({
   },
 });
 
-<<<<<<< HEAD
 export default function BottomMenu(props) {
   const classes = useStyles()
   const [value, setValue] = React.useState('home')
   const history = useHistory()
-=======
-export default function BottomMenu() {
-  const classes = useStyles();
-  const [value, setValue] = React.useState("home");
-  const history = useHistory();
->>>>>>> master
 
   const goToPage = (value) => {
     if (value === "home") {
@@ -40,18 +33,16 @@ export default function BottomMenu() {
   };
 
   return (
-<<<<<<< HEAD
-    <StyledBottomNavigation value={value} onChange={handleChange} className={classes.root}>
-      <BottomNavigationAction value="home" icon={<HomeOutlinedIcon />} onClick={() => props.clearCategory('')}/>
-      <BottomNavigationAction value="cart" icon={<ShoppingCartOutlinedIcon />} />
-      <BottomNavigationAction value="profile" icon={<PersonOutlineOutlinedIcon />} />
-=======
     <StyledBottomNavigation
       value={value}
       onChange={handleChange}
       className={classes.root}
     >
-      <BottomNavigationAction value="home" icon={<HomeOutlinedIcon />} />
+      <BottomNavigationAction 
+        value="home" 
+        icon={<HomeOutlinedIcon />}
+        onClick={() => props.clearCategory('')} 
+      />
       <BottomNavigationAction
         value="cart"
         icon={<ShoppingCartOutlinedIcon />}
@@ -60,7 +51,6 @@ export default function BottomMenu() {
         value="profile"
         icon={<PersonOutlineOutlinedIcon />}
       />
->>>>>>> master
     </StyledBottomNavigation>
   );
 }

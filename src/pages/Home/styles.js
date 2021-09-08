@@ -1,12 +1,11 @@
 import styled from "styled-components";
-import MenuBar from "../../components/MenuBar";
 
 export const ScreenContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 90%;
   align-items: center;
-  margin: 30px auto;
+  margin: 30px auto 0 auto;
   min-height: 100vh;
 `;
 
@@ -15,6 +14,10 @@ export const Divider = styled.hr`
   margin-top: 10px;
 `;
 
-export const StyledMenuBar = styled(MenuBar)`
-  /* box-shadow: none; */
-`;
+export const ContainerCards = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  width: 100%;
+  align-items: center;
+`
