@@ -9,7 +9,7 @@ import BottomMenu from "../../components/BottomMenu/index";
 import GlobalContext from "../../global/GlobalContext";
 import RestaurantCard from "../../components/RestaurantCard/index";
 import { useHistory } from "react-router";
-import useProtectedPage from '../../hooks/useProtectedPage';
+import useProtectedPage from "../../hooks/useProtectedPage";
 
 const useStyles = makeStyles((theme) => ({
   margin: {
@@ -25,18 +25,21 @@ function Home() {
   const { states, requests } = useContext(GlobalContext);
 
   const [category, setCategory] = useState("");
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     requests.getRestaurants();
   }, []);
 
-  const filteredList = states.restaurants?.filter((restaurant) => {
-    if (restaurant.category === category) {
-      return true;
-    } else if (category === "") {
-      return true;
-    } else {
-      return false;
+  const filteredList = states.restaurants?.filter((nameRest) => {
+    if (nameRest.name.toLowerCase().startsWith(search)) {
+      if (nameRest.category === category) {
+        return true;
+      } else if (category === "") {
+        return true;
+      } else {
+        return false;
+      }
     }
   });
 
@@ -44,7 +47,7 @@ function Home() {
     history.push(`/restaurant/details/${id}`);
   };
 
-  const restaurantList = filteredList?.map((restaurant) => {
+  const restaurantName = filteredList?.map((restaurant) => {
     return (
       <RestaurantCard
         onClick={() => getDetails(restaurant.id)}
@@ -65,6 +68,8 @@ function Home() {
         variant={"outlined"}
         className={classes.margin}
         placeholder={"Restaurante"}
+        onChange={(e) => setSearch(e.target.value)}
+        value={search}
         fullWidth
         InputProps={{
           startAdornment: (
@@ -75,7 +80,7 @@ function Home() {
         }}
       />
       <MenuBar setCategory={setCategory} />
-      {restaurantList}
+      {restaurantName}
       <BottomMenu />
     </ScreenContainer>
   );
