@@ -1,9 +1,23 @@
 import React, { useContext, useEffect } from "react";
-import { useParams } from "react-router";
+import { useHistory, useParams } from "react-router";
+import Header from "../../components/Header";
+import ProductCard from "../../components/ProductCard";
 import GlobalContext from "../../global/GlobalContext";
+import {
+  Container,
+  Name,
+  ContainerData,
+  Shipping,
+  Image,
+  DeliveryTime,
+  Category,
+  Address,
+  CategoryTitle,
+} from "./styles";
 
-function RestaurantDetails() {
+function RestaurantDetails(props) {
   const { id } = useParams();
+  const history = useHistory();
   const {
     states: { restaurant },
     setters: { setRestaurant },
@@ -22,11 +36,56 @@ function RestaurantDetails() {
     return <p>Carregando...</p>;
   }
 
+  const categories = restaurant?.products?.reduce((prev, curr) => {
+    return {
+      ...prev,
+      [curr.category]: prev[curr.category]
+        ? [...prev[curr.category], curr]
+        : [curr],
+    };
+  }, {});
+
+  console.log({ categories }, Object.entries(categories));
+
+  console.log(restaurant);
+
+  const renderMenu = () => {
+    return Object.entries(categories).map(([category, products]) => {
+      return (
+        <div key={category}>
+          <CategoryTitle>{category}</CategoryTitle>
+          {products.map((item) => (
+            <ProductCard
+              key={item.id}
+              image={item.photoUrl}
+              name={item.name}
+              ingredients={item.description}
+              price={item.price}
+            />
+          ))}
+        </div>
+      );
+    });
+  };
+
   return (
-    <div>
-      <h1>{restaurant.name}</h1>
-      <p>Tela com detalhes do restaurante selecionado</p>
-    </div>
+    <>
+      <Header title={restaurant.name} />
+      <Container>
+        <Image src={restaurant.logoUrl} alt="Imagem do restaurante" />
+        <ContainerData>
+          <Name>{restaurant.name}</Name>
+          <Category>{restaurant.category}</Category>
+          <div>
+            <DeliveryTime>{restaurant.deliveryTime} min</DeliveryTime>
+            <Shipping>Frete: R${restaurant.shipping}</Shipping>
+          </div>
+          <Address>{restaurant.address}</Address>
+        </ContainerData>
+
+        {renderMenu()}
+      </Container>
+    </>
   );
 }
 
