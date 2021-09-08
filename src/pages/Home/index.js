@@ -9,6 +9,7 @@ import BottomMenu from "../../components/BottomMenu/index";
 import GlobalContext from "../../global/GlobalContext";
 import RestaurantCard from "../../components/RestaurantCard/index";
 import { useHistory } from "react-router";
+import useProtectedPage from '../../hooks/useProtectedPage';
 
 const useStyles = makeStyles((theme) => ({
   margin: {
@@ -17,6 +18,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Home() {
+  useProtectedPage()
   const history = useHistory();
   const classes = useStyles();
 

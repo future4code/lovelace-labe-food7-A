@@ -5,7 +5,7 @@ import {useLayoutEffect} from 'react';
 const useUnprotectedPage = () =>{
     const history = useHistory()
     useLayoutEffect(() => {
-        const token = localStorage.getItem('token')
+        const token = localStorage.getItem('tokenRappi4C')
         if (token){
         history.push('/')    
         }

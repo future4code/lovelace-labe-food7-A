@@ -1,3 +1,12 @@
+// export const headers = {
+
+
+// };
+
 export const headers = {
-  "Content-Type": "application/json",
-};
+  headers:{
+  'Content-Type': 'application/json',
+
+  auth: localStorage.getItem('tokenRappi4C')
+  }
+}

@@ -3,10 +3,11 @@ import { useHistory } from "react-router";
 import { ScreenContainer, SignUpButton, Logo, Title } from "./styles";
 import FormLogin from "../Login/formLogin";
 import Rappi4 from "../../images/logo-future-eats-invert.svg";
-// import useProtectedPage from '../../hooks/useProtectedPage';
+import useUnprotectedPage from '../../hooks/useUnprotectedPage';
+
 
 function Login() {
-  // useProtectedPage()
+ useUnprotectedPage()
   const history = useHistory();
 
   const goToRegister = () => {
