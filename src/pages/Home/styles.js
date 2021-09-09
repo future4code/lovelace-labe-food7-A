@@ -20,4 +20,8 @@ export const ContainerCards = styled.div`
   flex-grow: 1;
   width: 100%;
   align-items: center;
-`
+`;
+export const Title = styled.p`
+  line-height: -0.39px;
+  margin-bottom: 12px;
+`;

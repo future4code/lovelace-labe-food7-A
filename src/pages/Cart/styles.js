@@ -13,7 +13,6 @@ export const Title = styled.p`
 `;
 export const MyAddress = styled.div`
   min-width: 360px;
-  height: 76px;
   margin: 1px 0 16px;
   padding: 16px;
   background-color: #eee;
@@ -119,4 +118,9 @@ export const Button = styled.button`
 export const BottomMenuCart = styled(BottomMenu)`
   position: fixed;
   bottom: 0;
+`;
+
+export const EmptyCart = styled.p`
+  text-align: center;
+  margin: 20px 0 45px 0;
 `;

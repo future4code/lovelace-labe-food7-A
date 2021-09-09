@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 
 import GlobalContext from "../../global/GlobalContext";
 import useProtectedPage from "../../hooks/useProtectedPage";
@@ -26,19 +26,22 @@ import {
   PricesContainer,
   // BottomMenuCart,
   FormGroup,
+  EmptyCart,
 } from "./styles";
 import { useState } from "react";
 
 function Cart(props) {
   const {
-    states: { restaurant, cart },
-    requests: { placeOrder },
+    states: { cart, activeOrder, profile, restaurant },
+    requests: { placeOrder, getProfileData, getRestaurant },
   } = useContext(GlobalContext);
   useProtectedPage();
 
-  const [paymentMethod, setPaymentMethod] = useState("");
+  useEffect(() => {
+    getProfileData();
+  }, []);
 
-  console.log({ paymentMethod });
+  const [paymentMethod, setPaymentMethod] = useState("");
 
   const handlePaymentForm = (e) => {
     console.log({ target: e.target });
@@ -58,8 +61,9 @@ function Cart(props) {
 
   const renderCartItems = () => {
     if (cart.products.length === 0) {
-      return <p>carrinho vazio</p>;
+      return <EmptyCart>Carrinho vazio</EmptyCart>;
     }
+
     return cart.products.map((item) => (
       <ProductCard key={item.id} product={item} />
     ));
@@ -72,15 +76,17 @@ function Cart(props) {
 
         <MyAddress>
           <AddressTitle>Endereço de entrega</AddressTitle>
-          <Street>Rua Alessandra Vieira, 42</Street>
+          <Street>{profile?.user.address}</Street>
         </MyAddress>
 
         <RestaurantInfoContainer>
-          <RestaurantName>Bullguer Vila Madalena</RestaurantName>
-          <RestaurantAddress>
-            R. Fradique Coutinho, 1136 - Vila Madalena
-          </RestaurantAddress>
-          <Delivery>30 - 45 min</Delivery>
+          {cart.restaurant && (
+            <>
+              <RestaurantName>{cart.restaurant?.name}</RestaurantName>
+              <RestaurantAddress>{cart.restaurant?.address}</RestaurantAddress>
+              <Delivery>{cart.restaurant?.deliveryTime} min</Delivery>
+            </>
+          )}
 
           <ProductsContainer>{renderCartItems()}</ProductsContainer>
 
