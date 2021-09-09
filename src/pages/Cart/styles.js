@@ -4,6 +4,7 @@ import BottomMenu from "../../components/BottomMenu";
 export const Container = styled.div`
   flex: 1;
   min-height: 92vh;
+  padding-bottom: 56px;
 `;
 
 export const Title = styled.p`
@@ -100,12 +101,9 @@ export const Input = styled.input`
   margin: 8px 16px;
   object-fit: contain;
 
-  /* .fill {
-    width: 20px;
-    height: 20px;
-    background-color: #000;
-
-  } */
+  background-color: ${({ active }) => (active ? "#000" : "fff")};
+  width: ${({ active }) => (active ? "20px" : "24px")};
+  height: ${({ active }) => (active ? "20px" : "24px")};
 `;
 export const Button = styled.button`
   min-width: 328px;
@@ -118,7 +116,7 @@ export const Button = styled.button`
   font-size: 16px;
 `;
 
-// export const BottomMenuCart = styled(BottomMenu)`
-//   position: fixed;
-//   bottom: 0;
-// `;
+export const BottomMenuCart = styled(BottomMenu)`
+  position: fixed;
+  bottom: 0;
+`;

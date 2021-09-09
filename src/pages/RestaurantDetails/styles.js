@@ -59,7 +59,7 @@ export const Address = styled.p`
 
 export const CategoryTitle = styled.div`
   border-bottom: 1px solid #000;
-  padding: 8px;
+  padding: 8px 0;
   margin-bottom: 6px;
 `;
 

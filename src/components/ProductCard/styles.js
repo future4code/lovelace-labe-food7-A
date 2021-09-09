@@ -6,6 +6,7 @@ export const Container = styled.div`
   display: flex;
   justify-content: flex-start;
   width: 100%;
+  height: 112px;
 
   & + & {
     margin-top: 7px;
@@ -50,12 +51,15 @@ export const Button = styled.button`
   min-width: 90px;
   padding: 0 16px;
   text-align: center;
+
+  color: ${({ active }) => (active ? "#e86e5a" : "#000")};
+  border-color: ${({ active }) => (active ? "#e86e5a" : "#000")};
 `;
 
 export const Amount = styled.button`
   border-radius: 0 8px;
   background-color: transparent;
-  border: solid 1px #000;
+  border: solid 1px #e86e5a;
   position: absolute;
   font-size: 16px;
   top: -1px;
@@ -65,4 +69,5 @@ export const Amount = styled.button`
   min-width: 33px;
   padding: 0 8px;
   text-align: center;
+  color: #e86e5a;
 `;

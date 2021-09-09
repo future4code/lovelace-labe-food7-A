@@ -1,16 +1,7 @@
-import {
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
-} from "@material-ui/core";
-import { SettingsOverscanSharp } from "@material-ui/icons";
 import React, { useContext, useState } from "react";
 import GlobalContext from "../../global/GlobalContext";
+
+import Modal from "../Modal";
 
 import {
   Container,
@@ -23,16 +14,16 @@ import {
   Amount,
 } from "./styles";
 
-function ProductCard({ product }) {
+function ProductCard({ product, restaurantId }) {
   const [showQuantityModal, setShowQuantityModal] = useState(false);
   const [productQuantity, setProductQuantity] = useState(0);
 
   const {
-    states: { restaurant, cart },
+    states: { cart },
     setters: { addToCart, removeFromCart },
   } = useContext(GlobalContext);
 
-  const productInCart = cart.find((p) => p.id === product.id);
+  const productInCart = cart.products.find((p) => p.id === product.id);
   const { photoUrl, name, description, price, quantity } =
     productInCart || product;
 
@@ -42,7 +33,7 @@ function ProductCard({ product }) {
   };
 
   const handleAddProduct = () => {
-    addToCart(product, productQuantity);
+    addToCart(restaurantId, product, productQuantity);
     handleCloseModal();
   };
 
@@ -56,43 +47,24 @@ function ProductCard({ product }) {
           <Ingredients>{description}</Ingredients>
           <Price>R${price}</Price>
           {productInCart ? (
-            <Button onClick={() => removeFromCart(product)}>remover</Button>
+            <Button active onClick={() => removeFromCart(product)}>
+              remover
+            </Button>
           ) : (
             <Button onClick={() => setShowQuantityModal(true)}>
               adicionar
             </Button>
           )}
         </TextContainer>
-      </Container>
 
-      <Dialog open={showQuantityModal} onClose={handleCloseModal}>
-        <DialogTitle>Selecione a quantidade desejada</DialogTitle>
-        <DialogContent>
-          <FormControl>
-            <InputLabel id="product-quantity-select">Quantidade</InputLabel>
-            <Select
-              labelId="product-quantity-select"
-              value={productQuantity}
-              onChange={(e) => {
-                setProductQuantity(Number(e.target.value));
-              }}
-            >
-              {Array(31)
-                .fill("")
-                .map((_, i) => (
-                  <MenuItem key={i} value={i}>
-                    {i}
-                  </MenuItem>
-                ))}
-            </Select>
-          </FormControl>
-        </DialogContent>
-        <DialogActions>
-          <button onClick={handleAddProduct} disabled={!productQuantity}>
-            Adicionar ao carrinho
-          </button>
-        </DialogActions>
-      </Dialog>
+        <Modal
+          open={showQuantityModal}
+          onClose={handleCloseModal}
+          value={productQuantity}
+          onChange={setProductQuantity}
+          onClick={handleAddProduct}
+        />
+      </Container>
     </>
   );
 }
