@@ -80,12 +80,8 @@ function Home() {
         }}
       />
       <MenuBar setCategory={setCategory} />
-      <ContainerCards>
-        {restaurantList}
-      </ContainerCards>
-      <BottomMenu 
-        clearCategory={setCategory}
-        initialValue='home' />
+      <ContainerCards>{restaurantList}</ContainerCards>
+      <BottomMenu clearCategory={setCategory} initialValue="home" />
     </ScreenContainer>
   );
 }
