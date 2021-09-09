@@ -1,24 +1,20 @@
-import axios from 'axios';
 import {useEffect, useState} from 'react'
+import api from "../config/api";
 
-const useRequestData = (initialData, url) =>{
-    const [data, setData] = useState(initialData)
+const useRequestData = (params) =>{
+    const [data, setData] = useState()
 
     useEffect(() => {
-        axios.get(url, {
-            headers: {
-                Authorization: localStorage.getItem('token') 
-            }
-        })
+        api.get(params)
         .then((response) =>{
             setData(response.data)
           })
         .catch((err) =>{
             console.log(err)
-            alert('Ocorreu um erro tente novamente')
+            alert('Ocorreu um erro, tente novamente')
         }) 
 
-    },[url])
+    },[params])
 
     return(data)
 
