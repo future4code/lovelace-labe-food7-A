@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import BottomMenu from "../../components/BottomMenu";
 
 export const Container = styled.div`
   width: 100%;
@@ -60,4 +61,10 @@ export const CategoryTitle = styled.div`
   border-bottom: 1px solid #000;
   padding: 8px;
   margin-bottom: 6px;
+`;
+
+export const BottomMenuDetails = styled(BottomMenu)`
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 `;

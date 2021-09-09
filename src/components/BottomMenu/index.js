@@ -9,7 +9,7 @@ import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles({
   root: {
-    width: 375,
+    width: "100%",
   },
 });
 
@@ -31,7 +31,7 @@ export default function BottomMenu(props) {
     <StyledBottomNavigation
       value={value}
       onChange={handleChange}
-      className={classes.root}
+      className={`${classes.root}`}
     >
       <BottomNavigationAction 
         value="home" 
