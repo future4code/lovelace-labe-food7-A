@@ -3,6 +3,7 @@ import BottomMenu from "../../components/BottomMenu";
 
 export const Container = styled.div`
   flex: 1;
+  min-height: 92vh;
 `;
 
 export const Title = styled.p`
