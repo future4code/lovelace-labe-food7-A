@@ -14,16 +14,16 @@ import {
   Amount,
 } from "./styles";
 
-function ProductCard({ product, props }) {
+function ProductCard({ product, restaurantId }) {
   const [showQuantityModal, setShowQuantityModal] = useState(false);
   const [productQuantity, setProductQuantity] = useState(0);
 
   const {
-    states: { restaurant, cart },
+    states: { cart },
     setters: { addToCart, removeFromCart },
   } = useContext(GlobalContext);
 
-  const productInCart = cart.find((p) => p.id === product.id);
+  const productInCart = cart.products.find((p) => p.id === product.id);
   const { photoUrl, name, description, price, quantity } =
     productInCart || product;
 
@@ -33,7 +33,7 @@ function ProductCard({ product, props }) {
   };
 
   const handleAddProduct = () => {
-    addToCart(product, productQuantity);
+    addToCart(restaurantId, product, productQuantity);
     handleCloseModal();
   };
 

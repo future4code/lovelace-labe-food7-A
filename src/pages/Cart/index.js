@@ -49,18 +49,20 @@ function Cart(props) {
     e.preventDefault();
 
     const body = {
-      products: cart.map(({ id, quantity }) => ({ id, quantity })),
+      products: cart.products.map(({ id, quantity }) => ({ id, quantity })),
       paymentMethod,
     };
 
-    placeOrder("id", body);
+    placeOrder(cart.restaurantId, body);
   };
 
   const renderCartItems = () => {
-    if (cart.length === 0) {
+    if (cart.products.length === 0) {
       return <p>carrinho vazio</p>;
     }
-    return cart.map((item) => <ProductCard key={item.id} product={item} />);
+    return cart.products.map((item) => (
+      <ProductCard key={item.id} product={item} />
+    ));
   };
 
   return (
