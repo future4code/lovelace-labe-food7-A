@@ -1,6 +1,6 @@
 import React from "react";
 
-function Search() {
+function EditProfile() {
   return (
     <div>
       <p>Tela esquisita com o input de busca</p>
@@ -8,4 +8,4 @@ function Search() {
   );
 }
 
-export default Search;
+export default EditProfile;

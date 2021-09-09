@@ -8,7 +8,7 @@ import Login from "../pages/Login";
 import Profile from "../pages/Profile";
 import Register from "../pages/Register";
 import RestaurantDetails from "../pages/RestaurantDetails";
-import Search from "../pages/Search";
+import EditProfile from "../pages/EditProfile";
 
 function Router() {
   return (
@@ -25,7 +25,7 @@ function Router() {
           path="/restaurant/details/:id"
           component={RestaurantDetails}
         />
-        <Route exact path="/search" component={Search} />
+        <Route exact path="/search" component={EditProfile} />
 
       </Switch>
     </BrowserRouter>

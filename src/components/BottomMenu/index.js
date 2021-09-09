@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { StyledBottomNavigation } from "./styles";
-import BottomNavigation from "@material-ui/core/BottomNavigation";
 import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
 import HomeOutlinedIcon from "@material-ui/icons/HomeOutlined";
 import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
@@ -14,38 +13,40 @@ const useStyles = makeStyles({
   },
 });
 
-export default function BottomMenu({ className }) {
-  const classes = useStyles();
-  const [value, setValue] = React.useState("home");
-  const history = useHistory();
-
-  const goToPage = (value) => {
-    if (value === "home") {
-      history.push("/");
-    } else {
-      history.push(`/${value}`);
-    }
-  };
+export default function BottomMenu(props) {
+  const classes = useStyles()
+  const [value, setValue] = React.useState(props.initialValue)
+  const history = useHistory()
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
-    goToPage(newValue);
   };
+
+  const handleHome = () => {
+    props.clearCategory && props.clearCategory('')
+    history.push('/')
+  }
 
   return (
     <StyledBottomNavigation
       value={value}
       onChange={handleChange}
-      className={`${className} ${classes.root}`}
+      className={`${classes.root}`}
     >
-      <BottomNavigationAction value="home" icon={<HomeOutlinedIcon />} />
+      <BottomNavigationAction 
+        value="home" 
+        icon={<HomeOutlinedIcon />}
+        onClick={handleHome}
+      />
       <BottomNavigationAction
         value="cart"
         icon={<ShoppingCartOutlinedIcon />}
+        onClick={() => history.push('cart')}
       />
       <BottomNavigationAction
         value="profile"
         icon={<PersonOutlineOutlinedIcon />}
+        onClick={() => history.push('profile')}
       />
     </StyledBottomNavigation>
   );

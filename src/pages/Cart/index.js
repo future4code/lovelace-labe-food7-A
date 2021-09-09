@@ -3,6 +3,7 @@ import React, { useContext } from "react";
 import GlobalContext from "../../global/GlobalContext";
 import useProtectedPage from "../../hooks/useProtectedPage";
 import ProductCard from "../../components/ProductCard";
+import BottomMenu from "../../components/BottomMenu";
 
 import {
   Container,
@@ -23,7 +24,7 @@ import {
   Input,
   Button,
   PricesContainer,
-  BottomMenuCart,
+  // BottomMenuCart,
   FormGroup,
 } from "./styles";
 
@@ -82,7 +83,7 @@ function Cart(props) {
           <Button>Confirmar</Button>
         </PaymentForm>
       </Container>
-      <BottomMenuCart />
+      <BottomMenu initialValue='cart' />
     </>
   );
 }

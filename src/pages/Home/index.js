@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Divider, ScreenContainer } from "./styles";
+import { ContainerCards, Divider, ScreenContainer } from "./styles";
 import { makeStyles } from "@material-ui/core/styles";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import TextField from "@material-ui/core/TextField";
@@ -47,7 +47,7 @@ function Home() {
     history.push(`/restaurant/details/${id}`);
   };
 
-  const restaurantName = filteredList?.map((restaurant) => {
+  const restaurantList = filteredList?.map((restaurant) => {
     return (
       <RestaurantCard
         onClick={() => getDetails(restaurant.id)}
@@ -80,8 +80,12 @@ function Home() {
         }}
       />
       <MenuBar setCategory={setCategory} />
-      {restaurantName}
-      <BottomMenu />
+      <ContainerCards>
+        {restaurantList}
+      </ContainerCards>
+      <BottomMenu 
+        clearCategory={setCategory}
+        initialValue='home' />
     </ScreenContainer>
   );
 }
