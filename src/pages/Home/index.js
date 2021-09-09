@@ -85,6 +85,8 @@ function Home() {
       <MenuBar setCategory={setCategory} />
       <ContainerCards>{restaurantList}</ContainerCards>
       <ActiveOrder />
+
+
       <BottomMenu clearCategory={setCategory} initialValue="home" />
     </ScreenContainer>
   );

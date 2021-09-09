@@ -17,8 +17,6 @@ function Profile() {
   const profile = useRequestData("/profile");
   const history = useRequestData("/orders/history");
 
-  // const { name, email, cpf } = data && data.user
-
   const historyList =
     history &&
     history.orders.map((order) => {
