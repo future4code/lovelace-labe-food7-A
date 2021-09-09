@@ -10,6 +10,9 @@ import GlobalContext from "../../global/GlobalContext";
 import RestaurantCard from "../../components/RestaurantCard/index";
 import { useHistory } from "react-router";
 import useProtectedPage from "../../hooks/useProtectedPage";
+import ActiveOrder from "../../components/ActiveOrder";
+
+import { Title } from "./styles";
 
 const useStyles = makeStyles((theme) => ({
   margin: {
@@ -62,7 +65,7 @@ function Home() {
 
   return (
     <ScreenContainer>
-      <h3>Rappi4</h3>
+      <Title>Rappi4</Title>
       <Divider />
       <TextField
         variant={"outlined"}
@@ -80,12 +83,9 @@ function Home() {
         }}
       />
       <MenuBar setCategory={setCategory} />
-      <ContainerCards>
-        {restaurantList}
-      </ContainerCards>
-      <BottomMenu 
-        clearCategory={setCategory}
-        initialValue='home' />
+      <ContainerCards>{restaurantList}</ContainerCards>
+      <ActiveOrder />
+      <BottomMenu clearCategory={setCategory} initialValue="home" />
     </ScreenContainer>
   );
 }

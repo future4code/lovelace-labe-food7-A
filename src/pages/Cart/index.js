@@ -31,14 +31,13 @@ import { useState } from "react";
 
 function Cart(props) {
   const {
-    states: { restaurant, cart },
+    states: { cart, activeOrder },
     requests: { placeOrder },
   } = useContext(GlobalContext);
   useProtectedPage();
 
+  console.log(activeOrder);
   const [paymentMethod, setPaymentMethod] = useState("");
-
-  console.log({ paymentMethod });
 
   const handlePaymentForm = (e) => {
     console.log({ target: e.target });
