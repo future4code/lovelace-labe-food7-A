@@ -13,6 +13,7 @@ import {
   Category,
   Address,
   CategoryTitle,
+  BottomMenuDetails,
 } from "./styles";
 
 function RestaurantDetails(props) {
@@ -55,13 +56,7 @@ function RestaurantDetails(props) {
         <div key={category}>
           <CategoryTitle>{category}</CategoryTitle>
           {products.map((item) => (
-            <ProductCard
-              key={item.id}
-              image={item.photoUrl}
-              name={item.name}
-              ingredients={item.description}
-              price={item.price}
-            />
+            <ProductCard key={item.id} product={item} />
           ))}
         </div>
       );
@@ -85,6 +80,7 @@ function RestaurantDetails(props) {
 
         {renderMenu()}
       </Container>
+      <BottomMenuDetails />
     </>
   );
 }
