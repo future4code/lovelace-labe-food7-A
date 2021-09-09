@@ -83,7 +83,7 @@ function Cart(props) {
           <Button>Confirmar</Button>
         </PaymentForm>
       </Container>
-      <BottomMenu initialValue='cart' />
+      <BottomMenu initialValue="cart" />
     </>
   );
 }
