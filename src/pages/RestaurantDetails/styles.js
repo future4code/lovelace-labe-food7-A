@@ -8,7 +8,7 @@ export const Container = styled.div`
   height: 190px;
   display: flex;
   flex-direction: column;
-  padding: 15px;
+  padding: 15px 15px 56px 15px;
 `;
 
 export const ContainerData = styled.div`

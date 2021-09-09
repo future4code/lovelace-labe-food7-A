@@ -56,11 +56,7 @@ function RestaurantDetails(props) {
         <div key={category}>
           <CategoryTitle>{category}</CategoryTitle>
           {products.map((item) => (
-            <ProductCard
-              key={item.id}
-              product={item}
-              restaurantId={restaurant.id}
-            />
+            <ProductCard key={item.id} product={item} restaurant={restaurant} />
           ))}
         </div>
       );
@@ -83,8 +79,8 @@ function RestaurantDetails(props) {
         </ContainerData>
 
         {renderMenu()}
+        <BottomMenuDetails />
       </Container>
-      <BottomMenuDetails />
     </>
   );
 }

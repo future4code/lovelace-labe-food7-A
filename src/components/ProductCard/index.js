@@ -14,7 +14,7 @@ import {
   Amount,
 } from "./styles";
 
-function ProductCard({ product, restaurantId }) {
+function ProductCard({ product, restaurant }) {
   const [showQuantityModal, setShowQuantityModal] = useState(false);
   const [productQuantity, setProductQuantity] = useState(0);
 
@@ -33,7 +33,7 @@ function ProductCard({ product, restaurantId }) {
   };
 
   const handleAddProduct = () => {
-    addToCart(restaurantId, product, productQuantity);
+    addToCart(restaurant, product, productQuantity);
     handleCloseModal();
   };
 
