@@ -46,3 +46,18 @@ export const addAdress = (body, clear, history) => {
       alert("Erro no cadastro de endereço, tente novamente!!");
     });
 };
+
+export const updateProfile= (body, history, clear) =>{
+  api
+.put("/profile", body)
+.then((res) => {
+  console.log(res, history, clear)
+  history.push('/')
+  clear()
+  })
+  .catch((err) =>{
+    console.log({...err})
+    alert("Erro na atualização do cadastro, tente novamente!!")
+  })
+}
+
