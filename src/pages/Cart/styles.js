@@ -4,6 +4,7 @@ import BottomMenu from "../../components/BottomMenu";
 export const Container = styled.div`
   flex: 1;
   min-height: 92vh;
+  padding-bottom: 56px;
 `;
 
 export const Title = styled.p`
@@ -118,7 +119,7 @@ export const Button = styled.button`
   font-size: 16px;
 `;
 
-// export const BottomMenuCart = styled(BottomMenu)`
-//   position: fixed;
-//   bottom: 0;
-// `;
+export const BottomMenuCart = styled(BottomMenu)`
+  position: fixed;
+  bottom: 0;
+`;

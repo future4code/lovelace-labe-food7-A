@@ -14,18 +14,18 @@ const useStyles = makeStyles({
 });
 
 export default function BottomMenu(props) {
-  const classes = useStyles()
-  const [value, setValue] = React.useState(props.initialValue)
-  const history = useHistory()
+  const classes = useStyles();
+  const [value, setValue] = React.useState(props.initialValue);
+  const history = useHistory();
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
   const handleHome = () => {
-    props.clearCategory && props.clearCategory('')
-    history.push('/')
-  }
+    props.clearCategory && props.clearCategory("");
+    history.push("/");
+  };
 
   return (
     <StyledBottomNavigation
@@ -33,20 +33,20 @@ export default function BottomMenu(props) {
       onChange={handleChange}
       className={`${classes.root}`}
     >
-      <BottomNavigationAction 
-        value="home" 
+      <BottomNavigationAction
+        value="home"
         icon={<HomeOutlinedIcon />}
         onClick={handleHome}
       />
       <BottomNavigationAction
         value="cart"
         icon={<ShoppingCartOutlinedIcon />}
-        onClick={() => history.push('cart')}
+        onClick={() => history.push("/cart")}
       />
       <BottomNavigationAction
         value="profile"
         icon={<PersonOutlineOutlinedIcon />}
-        onClick={() => history.push('profile')}
+        onClick={() => history.push("/profile")}
       />
     </StyledBottomNavigation>
   );
