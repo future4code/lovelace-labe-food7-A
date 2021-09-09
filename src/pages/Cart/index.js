@@ -27,12 +27,34 @@ import {
   // BottomMenuCart,
   FormGroup,
 } from "./styles";
+import { useState } from "react";
 
 function Cart(props) {
   const {
     states: { restaurant, cart },
+    requests: { placeOrder },
   } = useContext(GlobalContext);
   useProtectedPage();
+
+  const [paymentMethod, setPaymentMethod] = useState("");
+
+  console.log({ paymentMethod });
+
+  const handlePaymentForm = (e) => {
+    console.log({ target: e.target });
+    setPaymentMethod(e.target.value);
+  };
+
+  const onSubmitPaymentForm = (e) => {
+    e.preventDefault();
+
+    const body = {
+      products: cart.map(({ id, quantity }) => ({ id, quantity })),
+      paymentMethod,
+    };
+
+    placeOrder("id", body);
+  };
 
   const renderCartItems = () => {
     if (cart.length === 0) {
@@ -68,22 +90,36 @@ function Cart(props) {
           </PricesContainer>
         </RestaurantInfoContainer>
 
-        <PaymentForm>
+        <PaymentForm onSubmit={onSubmitPaymentForm}>
           <PaymentTitleContainer>
             <PaymentTitle>Forma de pagamento</PaymentTitle>
           </PaymentTitleContainer>
           <FormGroup>
-            <Input type="radio" />
-            <label>Dinheiro</label>
+            <Input
+              checked={paymentMethod === "money"}
+              value="money"
+              name="paymentMethod"
+              onChange={handlePaymentForm}
+              type="radio"
+              id="money"
+            />
+            <label htmlFor="money">Dinheiro</label>
           </FormGroup>
           <FormGroup>
-            <Input type="radio" />
-            <label> Cartão de Crédito</label>
+            <Input
+              checked={paymentMethod === "creditcard"}
+              value="creditcard"
+              name="paymentMethod"
+              onChange={handlePaymentForm}
+              type="radio"
+              id="creditcard"
+            />
+            <label htmlFor="creditcard">Cartão de Crédito</label>
           </FormGroup>
           <Button>Confirmar</Button>
         </PaymentForm>
       </Container>
-      <BottomMenu initialValue='cart' />
+      <BottomMenu initialValue="cart" />
     </>
   );
 }

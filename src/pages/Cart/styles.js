@@ -101,12 +101,9 @@ export const Input = styled.input`
   margin: 8px 16px;
   object-fit: contain;
 
-  /* .fill {
-    width: 20px;
-    height: 20px;
-    background-color: #000;
-
-  } */
+  background-color: ${({ active }) => (active ? "#000" : "fff")};
+  width: ${({ active }) => (active ? "20px" : "24px")};
+  height: ${({ active }) => (active ? "20px" : "24px")};
 `;
 export const Button = styled.button`
   min-width: 328px;

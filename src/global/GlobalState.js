@@ -6,6 +6,7 @@ const GlobalState = (props) => {
   const [restaurant, setRestaurant] = useState();
   const [restaurants, setRestaurants] = useState([]);
   const [cart, setCart] = useState([]);
+  const [orders, setOrders] = useState([]);
 
   const addToCart = (product, quantity = 1) => {
     const newProduct = { ...product, quantity };
@@ -37,9 +38,21 @@ const GlobalState = (props) => {
     });
   };
 
+  const placeOrder = (id, body) => {
+    api
+      .post(`/restaurants/${id}/order`, body)
+      .then((res) => {
+        setOrders(res.data);
+        console.log("Deu certo", res.data);
+      })
+      .catch((err) => {
+        console.log("deu errado", { ...err });
+      });
+  };
+
   const states = { restaurants, restaurant, cart };
   const setters = { setRestaurant, addToCart, removeFromCart };
-  const requests = { getRestaurants, getRestaurant };
+  const requests = { getRestaurants, getRestaurant, placeOrder };
 
   return (
     <GlobalContext.Provider value={{ states, setters, requests }}>
