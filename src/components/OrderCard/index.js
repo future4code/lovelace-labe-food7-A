@@ -1,10 +1,15 @@
 import React from "react";
+import { Container, ContainerData, Name, Price } from "./styles";
 
-function OrderCard() {
+function OrderCard(props) {
   return (
-    <div>
-      <p>Card do histórico de pedidos</p>
-    </div>
+    <Container>
+      <Name>{props.name}</Name>
+      <ContainerData>
+        <p>{props.expiresAt}</p>
+      </ContainerData>
+      <Price>SUBTOTAL R${props.totalPrice}</Price>
+    </Container>
   );
 }
 

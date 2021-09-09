@@ -1,11 +1,25 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import FormSplash from "../../components/SplashScreen/index";
+import Login from "../Login/index";
+import { useHistory } from "react-router";
 
 function SplashScreen() {
-  return (
-    <div>
-      <p>Tela com a SplashScreen</p>
-    </div>
-  );
+  const [screen, setScreen] = useState(true);
+  const { push } = useHistory();
+  const token = localStorage.getItem("tokenRappi4C");
+
+  useEffect(() => {
+    if (token) {
+      push("/list");
+    } else {
+      setTimeout(() => {
+        setScreen(false);
+        push("/login");
+      }, 3000);
+    }
+  }, []);
+
+  return <div>{screen ? <FormSplash /> : <Login />}</div>;
 }
 
 export default SplashScreen;

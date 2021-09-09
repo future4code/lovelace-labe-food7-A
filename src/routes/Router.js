@@ -9,6 +9,7 @@ import Profile from "../pages/Profile";
 import Register from "../pages/Register";
 import RestaurantDetails from "../pages/RestaurantDetails";
 import EditProfile from "../pages/EditProfile";
+import SplashScreen from "../pages/SplashScreen/index";
 
 function Router() {
   return (
@@ -16,7 +17,8 @@ function Router() {
       <Switch>
         <Route exact path="/address/form" component={AddressForm} />
         <Route exact path="/cart" component={Cart} />
-        <Route exact path="/" component={Home} />
+        <Route exact path="/" component={SplashScreen} />
+        <Route exact path="/list" component={Home} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/profile" component={Profile} />
         <Route exact path="/register" component={Register} />
@@ -26,7 +28,6 @@ function Router() {
           component={RestaurantDetails}
         />
         <Route exact path="/edit/profile" component={EditProfile} />
-
       </Switch>
     </BrowserRouter>
   );

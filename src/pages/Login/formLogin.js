@@ -32,10 +32,6 @@ const FormLogin = () => {
     event.preventDefault();
   };
 
-  // const goToAddressForm = () => {
-  //   history.push("/address/form");
-  // };
-
   return (
     <ContainerFormLogin>
       <form onSubmit={onSubmitFormLogin}>

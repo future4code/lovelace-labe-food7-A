@@ -5,19 +5,27 @@ import api from "../config/api";
 const GlobalState = (props) => {
   const [restaurant, setRestaurant] = useState();
   const [restaurants, setRestaurants] = useState([]);
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState({
+    products: [],
+    restaurantId: null,
+  });
+  const [orders, setOrders] = useState([]);
 
-  const addToCart = (product, quantity = 1) => {
+  const addToCart = (restaurantId, product, quantity = 1) => {
     const newProduct = { ...product, quantity };
-    const newCart = [...cart, newProduct];
-    setCart(newCart);
+
+    setCart((cart) => ({
+      ...cart,
+      restaurantId,
+      products: [...cart.products, newProduct],
+    }));
   };
 
   const removeFromCart = (product) => {
-    const newCart = cart.filter(
+    const newCart = cart.products.filter(
       (productInCart) => productInCart.id !== product.id
     );
-    setCart(newCart);
+    setCart((cart) => ({ ...cart, products: newCart }));
   };
 
   const getRestaurants = () => {
@@ -37,9 +45,25 @@ const GlobalState = (props) => {
     });
   };
 
+  const placeOrder = (id, body) => {
+    api
+      .post(`/restaurants/${id}/order`, body)
+      .then((res) => {
+        setOrders(res.data);
+        console.log("Deu certo", res.data);
+      })
+      .catch((err) => {
+        console.log("deu errado", { ...err });
+      });
+  };
+
   const states = { restaurants, restaurant, cart };
-  const setters = { setRestaurant, addToCart, removeFromCart };
-  const requests = { getRestaurants, getRestaurant };
+  const setters = {
+    setRestaurant,
+    addToCart,
+    removeFromCart,
+  };
+  const requests = { getRestaurants, getRestaurant, placeOrder };
 
   return (
     <GlobalContext.Provider value={{ states, setters, requests }}>
