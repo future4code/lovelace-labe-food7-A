@@ -1,10 +1,15 @@
 import React from "react";
+import useProtectedPage from "../../hooks/useProtectedPage";
+import FormEditProfile from "./formEditProfile";
+import { Title, ScreenEditProfile } from "./styles";
 
 function EditProfile() {
+  useProtectedPage()
   return (
-    <div>
-      <p>Tela esquisita com o input de busca</p>
-    </div>
+    <ScreenEditProfile>
+      <Title>Editar</Title>
+      <FormEditProfile />
+    </ScreenEditProfile>
   );
 }
 

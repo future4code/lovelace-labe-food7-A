@@ -27,7 +27,7 @@ function Router() {
           path="/restaurant/details/:id"
           component={RestaurantDetails}
         />
-        <Route exact path="/search" component={EditProfile} />
+        <Route exact path="/edit/profile" component={EditProfile} />
       </Switch>
     </BrowserRouter>
   );
