@@ -4,9 +4,10 @@ export const login = (body, clear, history) => {
   api
     .post("/login", body)
     .then((res) => {
+      console.log(res.data.token);
       localStorage.setItem("tokenRappi4C", res.data.token);
       if (res.data.user.hasAddress) {
-        history.push("/");
+        history.push("/list");
       } else {
         history.push("/address/form");
       }
