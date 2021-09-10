@@ -56,11 +56,7 @@ function RestaurantDetails() {
         <div key={category}>
           <CategoryTitle>{category}</CategoryTitle>
           {products.map((item) => (
-            <ProductCard
-              key={item.id}
-              product={item}
-              restaurantId={restaurant.id}
-            />
+            <ProductCard key={item.id} product={item} restaurant={restaurant} />
           ))}
         </div>
       );
@@ -69,7 +65,7 @@ function RestaurantDetails() {
 
   return (
     <>
-      <Header title={restaurant.name} />
+      <Header title="Restaurante" />
       <Container>
         <Image src={restaurant.logoUrl} alt="Imagem do restaurante" />
         <ContainerData>
@@ -83,8 +79,8 @@ function RestaurantDetails() {
         </ContainerData>
 
         {renderMenu()}
+        <BottomMenuDetails />
       </Container>
-      <BottomMenuDetails />
     </>
   );
 }

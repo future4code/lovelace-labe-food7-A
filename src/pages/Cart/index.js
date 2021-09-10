@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 
 import GlobalContext from "../../global/GlobalContext";
 import useProtectedPage from "../../hooks/useProtectedPage";
@@ -24,8 +24,8 @@ import {
   Input,
   Button,
   PricesContainer,
-  // BottomMenuCart,
   FormGroup,
+  EmptyCart,
 } from "./styles";
 import { useState } from "react";
 
@@ -33,12 +33,25 @@ function Cart() {
   const {
     states: { cart },
     requests: { placeOrder },
+    requests: { placeOrder, getProfileData },
   } = useContext(GlobalContext);
   useProtectedPage();
 
-  const [paymentMethod, setPaymentMethod] = useState("");
+  useEffect(() => {
+    getProfileData();
+  }, []);
 
-  console.log({ paymentMethod });
+  console.log(cart.products);
+
+  const handleTotal = () => {
+    const cartTotal = cart.products?.reduce(
+      (prev, curr) => prev + curr.price * curr.quantity,
+      0
+    );
+    return cartTotal;
+  };
+
+  const [paymentMethod, setPaymentMethod] = useState("");
 
   const handlePaymentForm = (e) => {
     console.log({ target: e.target });
@@ -53,13 +66,14 @@ function Cart() {
       paymentMethod,
     };
 
-    placeOrder(cart.restaurantId, body);
+    placeOrder(cart.restaurant?.id, body);
   };
 
   const renderCartItems = () => {
     if (cart.products.length === 0) {
-      return <p>carrinho vazio</p>;
+      return <EmptyCart>Carrinho vazio</EmptyCart>;
     }
+
     return cart.products.map((item) => (
       <ProductCard key={item.id} product={item} />
     ));
@@ -72,22 +86,24 @@ function Cart() {
 
         <MyAddress>
           <AddressTitle>Endereço de entrega</AddressTitle>
-          <Street>Rua Alessandra Vieira, 42</Street>
+          <Street>{profile?.user.address}</Street>
         </MyAddress>
 
         <RestaurantInfoContainer>
-          <RestaurantName>Bullguer Vila Madalena</RestaurantName>
-          <RestaurantAddress>
-            R. Fradique Coutinho, 1136 - Vila Madalena
-          </RestaurantAddress>
-          <Delivery>30 - 45 min</Delivery>
+          {cart.restaurant && (
+            <>
+              <RestaurantName>{cart.restaurant?.name}</RestaurantName>
+              <RestaurantAddress>{cart.restaurant?.address}</RestaurantAddress>
+              <Delivery>{cart.restaurant?.deliveryTime} min</Delivery>
+            </>
+          )}
 
           <ProductsContainer>{renderCartItems()}</ProductsContainer>
 
           <PricesContainer>
-            <ShippingPrice>Frete R$ 6,00</ShippingPrice>
+            <ShippingPrice>Frete R$ {cart.restaurant?.shipping}</ShippingPrice>
             <Total>
-              <span>SUBTOTAL</span>R$ 67,00
+              <span>SUBTOTAL</span>R$ {handleTotal()}
             </Total>
           </PricesContainer>
         </RestaurantInfoContainer>

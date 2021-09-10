@@ -1,11 +1,19 @@
 import { createGlobalStyle } from "styled-components";
 import Router from "./routes/Router";
-import React from "react";
-import theme from './constants/theme';
-import {ThemeProvider} from '@material-ui/core/styles';
-
+import React, { useContext, useEffect } from "react";
+import theme from "./constants/theme";
+import { ThemeProvider } from "@material-ui/core/styles";
+import GlobalContext from "./global/GlobalContext";
 
 function App() {
+  const {
+    requests: { getActiveOrder },
+  } = useContext(GlobalContext);
+
+  useEffect(() => {
+    getActiveOrder();
+  }, []);
+
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />

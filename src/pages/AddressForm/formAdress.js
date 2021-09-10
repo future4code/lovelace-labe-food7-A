@@ -30,7 +30,7 @@ const FormAdress = () => {
           value={form.street}
           onChange={onChange}
           label={"Logradouro"}
-          placeholder={"Rua / AV."}
+          placeholder={"Rua / Av."}
           variant={"outlined"}
           fullWidth
           margin={"normal"}

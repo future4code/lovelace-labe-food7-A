@@ -2,13 +2,13 @@ import styled from "styled-components";
 import BottomMenu from "../../components/BottomMenu";
 
 export const Container = styled.div`
-  width: 100%;
   margin-bottom: 12px;
   border-radius: 8px;
-  height: 190px;
   display: flex;
   flex-direction: column;
-  padding: 15px;
+  width: 100%;
+  min-height: 100vh;
+  padding: 15px 15px 56px 15px;
 `;
 
 export const ContainerData = styled.div`
@@ -34,8 +34,8 @@ export const Name = styled.p`
 `;
 
 export const Image = styled.img`
-  height: 70%;
   width: 100%;
+  height: 120px;
   border-top-right-radius: 8px;
   border-top-left-radius: 8px;
 `;

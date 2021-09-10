@@ -1,22 +1,36 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import GlobalContext from "./GlobalContext";
 import api from "../config/api";
+import * as restaurantsService from "../services/restaurants";
 
 const GlobalState = (props) => {
   const [restaurant, setRestaurant] = useState();
-  const [restaurants, setRestaurants] = useState([]);
+  const [restaurants, setRestaurants] = useState();
   const [cart, setCart] = useState({
     products: [],
-    restaurantId: null,
+    restaurant: null,
   });
-  const [setOrders] = useState([]);
 
-  const addToCart = (restaurantId, product, quantity = 1) => {
+  const [setOrders] = useState([]);
+  const [activeOrder, setActiveOrder] = useState(null);
+  const [profile, setProfile] = useState();
+
+  useEffect(() => {
+    const localCart = localStorage.getItem('cartRaapi4C')
+    localCart &&
+      setCart(JSON.parse(localCart))
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem('cartRaapi4C', JSON.stringify(cart))
+  }, [cart])
+
+  const addToCart = (restaurant, product, quantity = 1) => {
     const newProduct = { ...product, quantity };
 
     setCart((cart) => ({
       ...cart,
-      restaurantId,
+      restaurant,
       products: [...cart.products, newProduct],
     }));
   };
@@ -40,7 +54,7 @@ const GlobalState = (props) => {
   };
 
   const getRestaurant = (id) => {
-    api.get(`/restaurants/${id}`).then(({ data }) => {
+    restaurantsService.getRestaurant(id).then(({ data }) => {
       setRestaurant(data.restaurant);
     });
   };
@@ -56,13 +70,49 @@ const GlobalState = (props) => {
       });
   };
 
-  const states = { restaurants, restaurant, cart };
+  const getActiveOrder = () => {
+    api
+      .get("/active-order")
+      .then((res) => {
+        setActiveOrder(res.data.order);
+      })
+      .catch((e) => {
+        console.log({ ...e });
+      });
+  };
+
+  const getProfileData = () => {
+    api
+      .get("/profile")
+      .then((res) => {
+        setProfile(res.data);
+      })
+      .catch((e) => {
+        console.log("Não pegou o perfil", { ...e });
+      });
+  };
+
+  const states = {
+    restaurants,
+    restaurant,
+    cart,
+    orders,
+    activeOrder,
+    profile,
+  };
+
   const setters = {
     setRestaurant,
     addToCart,
     removeFromCart,
   };
-  const requests = { getRestaurants, getRestaurant, placeOrder };
+  const requests = {
+    getRestaurants,
+    getRestaurant,
+    placeOrder,
+    getActiveOrder,
+    getProfileData,
+  };
 
   return (
     <GlobalContext.Provider value={{ states, setters, requests }}>

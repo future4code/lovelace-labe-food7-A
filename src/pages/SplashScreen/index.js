@@ -13,7 +13,7 @@ function SplashScreen() {
       setScreen(false);
       push(token ? "/list" : "login");
     }, 2000);
-
+    
     return () => {
       if (timeout) clearTimeout(timeout);
     };
