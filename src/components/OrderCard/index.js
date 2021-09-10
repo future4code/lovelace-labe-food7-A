@@ -8,7 +8,7 @@ function OrderCard(props) {
       <ContainerData>
         <p>{props.expiresAt}</p>
       </ContainerData>
-      <Price>SUBTOTAL R${props.totalPrice}</Price>
+      <Price>SUBTOTAL R${props.totalPrice.toFixed(2)}</Price>
     </Container>
   );
 }
