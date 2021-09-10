@@ -29,9 +29,9 @@ import {
 } from "./styles";
 import { useState } from "react";
 
-function Cart(props) {
+function Cart() {
   const {
-    states: { restaurant, cart },
+    states: { cart },
     requests: { placeOrder },
   } = useContext(GlobalContext);
   useProtectedPage();

@@ -9,7 +9,7 @@ const GlobalState = (props) => {
     products: [],
     restaurantId: null,
   });
-  const [orders, setOrders] = useState([]);
+  const [setOrders] = useState([]);
 
   const addToCart = (restaurantId, product, quantity = 1) => {
     const newProduct = { ...product, quantity };
@@ -50,7 +50,6 @@ const GlobalState = (props) => {
       .post(`/restaurants/${id}/order`, body)
       .then((res) => {
         setOrders(res.data);
-        console.log("Deu certo", res.data);
       })
       .catch((err) => {
         console.log("deu errado", { ...err });
