@@ -65,7 +65,7 @@ function RestaurantDetails(props) {
 
   return (
     <>
-      <Header title={restaurant.name} />
+      <Header title="Restaurante" />
       <Container>
         <Image src={restaurant.logoUrl} alt="Imagem do restaurante" />
         <ContainerData>

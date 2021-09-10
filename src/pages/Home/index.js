@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { ContainerCards, Divider, ScreenContainer } from "./styles";
+import { ContainerCards, Header, ScreenContainer } from "./styles";
 import { makeStyles } from "@material-ui/core/styles";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import TextField from "@material-ui/core/TextField";
@@ -10,9 +10,6 @@ import GlobalContext from "../../global/GlobalContext";
 import RestaurantCard from "../../components/RestaurantCard/index";
 import { useHistory } from "react-router";
 import useProtectedPage from "../../hooks/useProtectedPage";
-import ActiveOrder from "../../components/ActiveOrder";
-
-import { Title } from "./styles";
 
 const useStyles = makeStyles((theme) => ({
   margin: {
@@ -46,12 +43,22 @@ function Home() {
     }
   });
 
+  console.log({ filteredList }, states.restaurants);
+
   const getDetails = (id) => {
     history.push(`/restaurant/details/${id}`);
   };
 
-  const restaurantList = filteredList?.map((restaurant) => {
-    return (
+  const renderRestaurantList = () => {
+    if (!filteredList) {
+      return <p>Buscando restaurantes...</p>;
+    }
+
+    if (filteredList.length === 0) {
+      return <p>Não encontramos :(</p>;
+    }
+
+    return filteredList?.map((restaurant) => (
       <RestaurantCard
         onClick={() => getDetails(restaurant.id)}
         key={restaurant.id}
@@ -60,35 +67,33 @@ function Home() {
         shipping={restaurant.shipping}
         logoUrl={restaurant.logoUrl}
       />
-    );
-  });
+    ));
+  };
 
   return (
-    <ScreenContainer>
-      <Title>Rappi4</Title>
-      <Divider />
-      <TextField
-        variant={"outlined"}
-        className={classes.margin}
-        placeholder={"Restaurante"}
-        onChange={(e) => setSearch(e.target.value)}
-        value={search}
-        fullWidth
-        InputProps={{
-          startAdornment: (
-            <InputAdornment position="start">
-              <SearchIcon />
-            </InputAdornment>
-          ),
-        }}
-      />
-      <MenuBar setCategory={setCategory} />
-      <ContainerCards>{restaurantList}</ContainerCards>
-      <ActiveOrder />
-
-
-      <BottomMenu clearCategory={setCategory} initialValue="home" />
-    </ScreenContainer>
+    <>
+      <Header>Rappi4</Header>
+      <ScreenContainer>
+        <TextField
+          variant={"outlined"}
+          className={classes.margin}
+          placeholder={"Restaurante"}
+          onChange={(e) => setSearch(e.target.value)}
+          value={search}
+          fullWidth
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <SearchIcon />
+              </InputAdornment>
+            ),
+          }}
+        />
+        <MenuBar setCategory={setCategory} />
+        <ContainerCards>{renderRestaurantList()}</ContainerCards>
+        <BottomMenu clearCategory={setCategory} initialValue="home" />
+      </ScreenContainer>
+    </>
   );
 }
 
