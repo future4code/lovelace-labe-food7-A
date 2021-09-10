@@ -1,18 +1,21 @@
 import React from "react";
-import FormAdress from "./formAdress";
-import { ScreenAddressForm, Logo, Title } from "./styles";
+import { useHistory } from "react-router";
+import FormEditAddress from "./formEditAddress";
+import { ScreenAddressForm, Title } from "./styles";
 import useProtectedPage from "../../hooks/useProtectedPage";
 import Header from "../../components/Header";
-const AddresForm = () => {
+
+const EditAddress = () => {
   useProtectedPage();
+  const history = useHistory();
 
   return (
     <ScreenAddressForm>
       <Header />
       <Title>Meu Endereço</Title>
-      <FormAdress />
+      <FormEditAddress />
     </ScreenAddressForm>
   );
 };
 
-export default AddresForm;
+export default EditAddress;

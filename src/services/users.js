@@ -64,3 +64,17 @@ export const updateProfile = (body, history, clear) => {
       alert("Erro na atualização do cadastro, tente novamente!!");
     });
 };
+export const editAddress = (body, clear, history) => {
+  api
+    .put("/address", body)
+    .then((res) => {
+      localStorage.setItem("tokenRappi4C", res.data.token);
+      console.log(res);
+      history.push("/profile");
+      clear();
+    })
+    .catch((err) => {
+      console.log(err.response.data);
+      alert("Erro no cadastro de endereço, tente novamente!!");
+    });
+};

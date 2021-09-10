@@ -10,6 +10,7 @@ const GlobalState = (props) => {
     products: [],
     restaurant: null,
   });
+
   const [orders, setOrders] = useState([]);
   const [activeOrder, setActiveOrder] = useState(null);
   const [profile, setProfile] = useState();

@@ -30,7 +30,7 @@ import {
 import { useState } from "react";
 import Loader from "../../components/Loader";
 
-function Cart(props) {
+function Cart() {
   const {
     states: { cart, profile, activeOrder },
     requests: { placeOrder, getProfileData },

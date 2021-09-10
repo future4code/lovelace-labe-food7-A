@@ -11,8 +11,9 @@ function SplashScreen() {
   useEffect(() => {
     let timeout = setTimeout(() => {
       setScreen(false);
-      push(token ? "/list" : "/login");
+      push(token ? "/list" : "login");
     }, 2000);
+    
     return () => {
       if (timeout) clearTimeout(timeout);
     };

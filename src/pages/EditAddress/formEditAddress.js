@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import TextField from "@material-ui/core/TextField";
 import useForm from "../../hooks/useForm";
-import { addAdress } from "../../services/users";
-import { ContainerFormAdress, ButtonAddress } from "./styles";
+import { editAddress } from "../../services/users";
+import { ContainerFormEditAddress } from "./styles";
+import { Button } from "@material-ui/core";
 import { useHistory } from "react-router";
-import Loader from "../../components/Loader";
 
-const FormAdress = () => {
+const FormEditAddress = () => {
   const [form, onChange, clear] = useForm({
     street: "",
     number: "",
@@ -15,19 +15,16 @@ const FormAdress = () => {
     state: "",
     complement: "",
   });
-  const [isLoading, setIsLoading] = useState(false);
 
   const history = useHistory();
-
   const onSubmitFormAdress = (event) => {
     event.preventDefault();
-    setIsLoading(true);
-
-    addAdress(form, clear, history);
+    editAddress(form, clear, history);
+    console.log(editAddress);
   };
 
   return (
-    <ContainerFormAdress>
+    <ContainerFormEditAddress>
       <form onSubmit={onSubmitFormAdress}>
         <TextField
           name={"street"}
@@ -119,18 +116,17 @@ const FormAdress = () => {
             shrink: true,
           }}
         />
-        <ButtonAddress
+        <Button
           fullWidth
           variant={"contained"}
           color={"primary"}
           type={"submit"}
-          disabled={isLoading}
         >
-          {isLoading ? <Loader /> : "Salvar"}
-        </ButtonAddress>
+          Salvar
+        </Button>
       </form>
-    </ContainerFormAdress>
+    </ContainerFormEditAddress>
   );
 };
 
-export default FormAdress;
+export default FormEditAddress;
