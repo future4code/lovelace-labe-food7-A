@@ -99,13 +99,6 @@ export const Input = styled.input`
   height: 24px;
   margin: 8px 16px;
   object-fit: contain;
-
-  /* background-color: ${({ active }) => (active ? "#000" : "fff")};
-  width: ${({ active }) => (active ? "20px" : "24px")};
-  height: ${({ active }) => (active ? "20px" : "24px")}; */
-  /* &:checked:after {
-    color: red;
-  } */
 `;
 export const Button = styled.button`
   min-width: 328px;
@@ -116,6 +109,11 @@ export const Button = styled.button`
   border: none;
   margin: 19px 16px;
   font-size: 16px;
+
+  &:disabled {
+    background-color: #f3b6ac;
+    color: #000;
+  }
 `;
 
 export const BottomMenuCart = styled(BottomMenu)`

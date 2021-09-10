@@ -30,7 +30,10 @@ const GlobalState = (props) => {
     setCart((cart) => ({
       ...cart,
       restaurant,
-      products: [...cart.products, newProduct],
+      products:
+        restaurant.id === cart.restaurant?.id
+          ? [...cart.products, newProduct]
+          : [newProduct],
     }));
   };
 
@@ -63,6 +66,12 @@ const GlobalState = (props) => {
       .post(`/restaurants/${id}/order`, body)
       .then((res) => {
         setOrders(res.data);
+        getActiveOrder();
+        setCart({
+          products: [],
+          restaurant: null,
+        });
+        console.log("Deu certo", res.data);
       })
       .catch((err) => {
         console.log("deu errado", { ...err });

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Logo } from "../Login/styles";
+import { Button } from "@material-ui/core";
 
 export const ContainerFormRegister = styled.div`
   display: flex;
@@ -28,4 +29,10 @@ export const Title = styled.p`
 
 export const LogoRappi = styled(Logo)`
   margin: 20px;
+`;
+
+export const ButtonRegister = styled(Button)`
+  &&.Mui-disabled {
+    background-color: #f3b6ac;
+  }
 `;
