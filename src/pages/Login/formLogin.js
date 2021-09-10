@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import useForm from "../../hooks/useForm";
 import TextField from "@material-ui/core/TextField";
-import { Button } from "@material-ui/core";
 import { login } from "../../services/users";
 import { ContainerFormLogin } from "./styles";
 import Visibility from "@material-ui/icons/Visibility";
@@ -9,6 +8,8 @@ import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import IconButton from "@material-ui/core/IconButton";
 import { useHistory } from "react-router";
+import Loader from "../../components/Loader";
+import { ButtonLogin } from "./styles";
 
 const FormLogin = () => {
   const [form, onChange, clear] = useForm({ email: "", password: "" });
@@ -18,10 +19,13 @@ const FormLogin = () => {
     showPassword: false,
   });
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const onSubmitFormLogin = (event) => {
     event.preventDefault();
-    login(form, clear, history);
-    console.log(login);
+
+    setIsLoading(true);
+    login(form, clear, history, setIsLoading);
   };
 
   const handleClickShowPassword = () => {
@@ -79,14 +83,15 @@ const FormLogin = () => {
             ),
           }}
         />
-        <Button
+        <ButtonLogin
           fullWidth
           variant={"contained"}
           color={"primary"}
           type={"submit"}
+          disabled={isLoading}
         >
-          Entrar
-        </Button>
+          {isLoading ? <Loader /> : "Entrar"}
+        </ButtonLogin>
       </form>
     </ContainerFormLogin>
   );

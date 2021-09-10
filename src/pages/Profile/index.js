@@ -7,29 +7,33 @@ import {
   ContainerOrders,
   ContainerPersonal,
   ScreenContainer,
+  Address,
+  AddressTitle,
+  EditIcon,
+  Email,
+  EditIconProfile,
 } from "./styles";
 import BottomMenu from "../../components/BottomMenu";
 import useRequestData from "../../hooks/useRequestData";
-import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 import OrderCard from "../../components/OrderCard/index";
 import { useHistory } from "react-router";
 
 function Profile() {
   const profile = useRequestData("/profile");
   const history = useRequestData("/orders/history");
-  const goTo = useHistory()
+  const goTo = useHistory();
 
-  const goToEditProfile = () =>{
-    goTo.push('/edit/profile')
-  }
+  const goToEditProfile = () => {
+    goTo.push("/edit/profile");
+  };
 
-  const goToEditAddress = () =>{
-    goTo.push('/edit/address')
-  }
+  const goToEditAddress = () => {
+    goTo.push("/edit/address");
+  };
 
-  const goToList = () =>{
-    goTo.push('/list')
-  }
+  const goToList = () => {
+    goTo.push("/list");
+  };
 
   const historyList =
     history &&
@@ -55,13 +59,13 @@ function Profile() {
   useProtectedPage();
   return (
     <div>
-      <Header title="Meu perfil" onClick={goToList}/>
+      <Header title="Meu perfil" onClick={goToList} />
       <ScreenContainer>
         <ContainerData>
           <ContainerPersonal>
             <div>
               <p>{profile && profile.user.name}</p>
-              <p>{profile && profile.user.email}</p>
+              <Email>{profile && profile.user.email}</Email>
               <p>
                 {profile &&
                   profile.user.cpf.replace(
@@ -70,15 +74,15 @@ function Profile() {
                   )}
               </p>
             </div>
-            <EditOutlinedIcon onClick={goToEditProfile}/>
+            <EditIconProfile onClick={goToEditProfile} />
           </ContainerPersonal>
 
           <ContainerAddress>
             <div>
-              <p>Endereço cadastrado</p>
-              <p>{profile && profile.user.address}</p>
+              <AddressTitle>Endereço cadastrado</AddressTitle>
+              <Address>{profile && profile.user.address}</Address>
             </div>
-            <EditOutlinedIcon onClick={goToEditAddress}/>
+            <EditIcon onClick={goToEditAddress} />
           </ContainerAddress>
           <ContainerOrders>
             <p>Histórico de pedidos</p>

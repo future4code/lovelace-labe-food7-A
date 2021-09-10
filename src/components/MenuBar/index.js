@@ -1,79 +1,35 @@
-import React from "react"
-import { ContainerMenu } from "./styles"
-import { Button } from "@material-ui/core"
+import React from "react";
+import { ContainerMenu, Button } from "./styles";
+
+const categories = [
+  "Árabe",
+  "Asiática",
+  "Hamburguer",
+  "Italiana",
+  "Sorvetes",
+  "Carnes",
+  "Baiana",
+  "Petiscos",
+  "Mexicana",
+];
 
 export default function MenuBar(props) {
-
   const handleClick = (category) => {
-    props.setCategory(category)
-  }
+    props.setCategory(category);
+  };
 
   return (
     <ContainerMenu>
-
-      <Button
-        size={'small'}
-        onClick={() => handleClick('Árabe')}
-      >
-        Árabe
-      </Button>
-     
-      <Button
-        size={'small'}
-        onClick={() => handleClick('Asiática')}
-      >
-        Asiática
-      </Button>
-
-      <Button
-        size={'small'}
-        onClick={() => handleClick('Hamburguer')}
-      >
-        Hamburger
-      </Button>
-
-      <Button
-        size={'small'}
-        onClick={() => handleClick('Italiana')}
-      >
-        Italiana
-      </Button>
-
-      <Button
-        size={'small'}
-        onClick={() => handleClick('Sorvetes')}
-      >
-        Sorvetes
-      </Button>
-
-      <Button
-        size={'small'}
-        onClick={() => handleClick('Carnes')}
-      >
-        Carnes
-      </Button>
-
-      <Button
-        size={'small'}
-        onClick={() => handleClick('Baiana')}
-      >
-        Baiana
-      </Button>
-
-      <Button
-        size={'small'}
-        onClick={() => handleClick('Petiscos')}
-      >
-        Petiscos
-      </Button>
-
-      <Button
-        size={'small'}
-        onClick={() => handleClick('Mexicana')}
-      >
-        Mexicana
-      </Button>
-
+      {categories.map((category) => (
+        <Button
+          key={category}
+          size="small"
+          active={props.activeCategory === category}
+          onClick={() => handleClick(category)}
+        >
+          {category}
+        </Button>
+      ))}
     </ContainerMenu>
-  )
+  );
 }
