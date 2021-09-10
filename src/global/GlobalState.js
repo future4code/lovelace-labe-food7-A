@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import GlobalContext from "./GlobalContext";
 import api from "../config/api";
 import * as restaurantsService from "../services/restaurants";
@@ -13,6 +13,16 @@ const GlobalState = (props) => {
   const [orders, setOrders] = useState([]);
   const [activeOrder, setActiveOrder] = useState(null);
   const [profile, setProfile] = useState();
+
+  useEffect(() => {
+    const localCart = localStorage.getItem('cartRaapi4C')
+    localCart &&
+      setCart(JSON.parse(localCart))
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem('cartRaapi4C', JSON.stringify(cart))
+  }, [cart])
 
   const addToCart = (restaurant, product, quantity = 1) => {
     const newProduct = { ...product, quantity };
