@@ -9,12 +9,11 @@ import {
   Select,
 } from "@material-ui/core";
 
-export const Container = styled(Dialog)`
-  margin: 27px 16px 29px;
-`;
+export const Container = styled(Dialog)``;
 export const Title = styled(DialogTitle)`
   h2 {
-    margin: 31px 16px 19px 16px;
+    margin: 12px;
+    font-size: 16px;
   }
 `;
 export const Content = styled(DialogContent)``;
@@ -23,9 +22,7 @@ export const Form = styled(FormControl)`
 `;
 export const SelectQuantity = styled(Select)`
   width: 100%;
-  /* height: 56px; */
-  margin: 9px 0;
-  padding: 16px;
+  padding: 14px;
   border-radius: 4px;
   border: solid 1px #b8b8b8;
 `;

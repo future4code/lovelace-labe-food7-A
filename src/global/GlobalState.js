@@ -5,7 +5,7 @@ import * as restaurantsService from "../services/restaurants";
 
 const GlobalState = (props) => {
   const [restaurant, setRestaurant] = useState();
-  const [restaurants, setRestaurants] = useState([]);
+  const [restaurants, setRestaurants] = useState();
   const [cart, setCart] = useState({
     products: [],
     restaurant: null,

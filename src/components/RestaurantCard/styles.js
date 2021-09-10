@@ -9,7 +9,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  letter-spacing: -0.39px;
   > img {
     height: 70%;
     width: 100%;

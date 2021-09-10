@@ -9,19 +9,14 @@ function SplashScreen() {
   const token = localStorage.getItem("tokenRappi4C");
 
   useEffect(() => {
-    let timeout;
-    if (token) {
-      push("/list");
-    } else {
-      timeout = setTimeout(() => {
-        setScreen(false);
-        push("/login");
-      }, 3000);
-    }
+    let timeout = setTimeout(() => {
+      setScreen(false);
+      push(token ? "/list" : "/login");
+    }, 2000);
     return () => {
       if (timeout) clearTimeout(timeout);
     };
-  }, []);
+  }, [push, token]);
 
   return <div>{screen ? <FormSplash /> : <Login />}</div>;
 }

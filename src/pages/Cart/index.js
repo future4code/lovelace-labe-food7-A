@@ -24,7 +24,6 @@ import {
   Input,
   Button,
   PricesContainer,
-  // BottomMenuCart,
   FormGroup,
   EmptyCart,
 } from "./styles";
@@ -32,14 +31,24 @@ import { useState } from "react";
 
 function Cart(props) {
   const {
-    states: { cart, activeOrder, profile, restaurant },
-    requests: { placeOrder, getProfileData, getRestaurant },
+    states: { cart, profile },
+    requests: { placeOrder, getProfileData },
   } = useContext(GlobalContext);
   useProtectedPage();
 
   useEffect(() => {
     getProfileData();
   }, []);
+
+  console.log(cart.products);
+
+  const handleTotal = () => {
+    const cartTotal = cart.products?.reduce(
+      (prev, curr) => prev + curr.price * curr.quantity,
+      0
+    );
+    return cartTotal;
+  };
 
   const [paymentMethod, setPaymentMethod] = useState("");
 
@@ -91,9 +100,9 @@ function Cart(props) {
           <ProductsContainer>{renderCartItems()}</ProductsContainer>
 
           <PricesContainer>
-            <ShippingPrice>Frete R$ 6,00</ShippingPrice>
+            <ShippingPrice>Frete R$ {cart.restaurant?.shipping}</ShippingPrice>
             <Total>
-              <span>SUBTOTAL</span>R$ 67,00
+              <span>SUBTOTAL</span>R$ {handleTotal()}
             </Total>
           </PricesContainer>
         </RestaurantInfoContainer>
