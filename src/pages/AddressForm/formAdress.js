@@ -20,7 +20,6 @@ const FormAdress = () => {
   const onSubmitFormAdress = (event) => {
     event.preventDefault();
     addAdress(form, clear, history);
-    console.log(addAdress);
   };
 
   return (

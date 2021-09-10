@@ -30,6 +30,7 @@ function Home() {
 
   useEffect(() => {
     requests.getRestaurants();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const filteredList = states.restaurants?.filter((nameRest) => {

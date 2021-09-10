@@ -10,7 +10,8 @@ const GlobalState = (props) => {
     products: [],
     restaurant: null,
   });
-  const [orders, setOrders] = useState([]);
+
+  const [setOrders] = useState([]);
   const [activeOrder, setActiveOrder] = useState(null);
   const [profile, setProfile] = useState();
 
@@ -63,8 +64,6 @@ const GlobalState = (props) => {
       .post(`/restaurants/${id}/order`, body)
       .then((res) => {
         setOrders(res.data);
-        getActiveOrder();
-        console.log("Deu certo", res.data);
       })
       .catch((err) => {
         console.log("deu errado", { ...err });

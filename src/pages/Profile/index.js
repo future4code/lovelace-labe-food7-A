@@ -48,7 +48,13 @@ function Profile() {
             <div>
               <p>{profile && profile.user.name}</p>
               <p>{profile && profile.user.email}</p>
-              <p>{profile && profile.user.cpf}</p>
+              <p>
+                {profile &&
+                  profile.user.cpf.replace(
+                    /(\d{3})(\d{3})(\d{3})(\d{2})/,
+                    "$1.$2.$3-$4"
+                  )}
+              </p>
             </div>
             <EditOutlinedIcon />
           </ContainerPersonal>

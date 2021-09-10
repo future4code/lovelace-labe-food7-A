@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { StyledBottomNavigation } from "./styles";
 import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";

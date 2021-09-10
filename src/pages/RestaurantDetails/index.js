@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { useHistory, useParams } from "react-router";
+import { useParams } from "react-router";
 import Header from "../../components/Header";
 import ProductCard from "../../components/ProductCard";
 import GlobalContext from "../../global/GlobalContext";
@@ -16,9 +16,8 @@ import {
   BottomMenuDetails,
 } from "./styles";
 
-function RestaurantDetails(props) {
+function RestaurantDetails() {
   const { id } = useParams();
-  const history = useHistory();
   const {
     states: { restaurant },
     setters: { setRestaurant },
@@ -31,6 +30,7 @@ function RestaurantDetails(props) {
     return () => {
       setRestaurant(undefined);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
   if (!restaurant) {
