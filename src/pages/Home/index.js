@@ -10,6 +10,7 @@ import GlobalContext from "../../global/GlobalContext";
 import RestaurantCard from "../../components/RestaurantCard/index";
 import { useHistory } from "react-router";
 import useProtectedPage from "../../hooks/useProtectedPage";
+import ActiveOrder from "../../components/ActiveOrder";
 
 const useStyles = makeStyles((theme) => ({
   margin: {
@@ -84,13 +85,15 @@ function Home() {
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <SearchIcon />
+                <SearchIcon style={{ color: "#b8b8b8" }} />
               </InputAdornment>
             ),
           }}
         />
         <MenuBar setCategory={setCategory} />
         <ContainerCards>{renderRestaurantList()}</ContainerCards>
+        <ActiveOrder />
+
         <BottomMenu clearCategory={setCategory} initialValue="home" />
       </ScreenContainer>
     </>
