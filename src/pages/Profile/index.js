@@ -7,10 +7,14 @@ import {
   ContainerOrders,
   ContainerPersonal,
   ScreenContainer,
+  Address,
+  AddressTitle,
+  EditIcon,
+  Email,
+  EditIconProfile,
 } from "./styles";
 import BottomMenu from "../../components/BottomMenu";
 import useRequestData from "../../hooks/useRequestData";
-import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 import OrderCard from "../../components/OrderCard/index";
 
 function Profile() {
@@ -47,18 +51,18 @@ function Profile() {
           <ContainerPersonal>
             <div>
               <p>{profile && profile.user.name}</p>
-              <p>{profile && profile.user.email}</p>
+              <Email>{profile && profile.user.email}</Email>
               <p>{profile && profile.user.cpf}</p>
             </div>
-            <EditOutlinedIcon />
+            <EditIconProfile />
           </ContainerPersonal>
 
           <ContainerAddress>
             <div>
-              <p>Endereço cadastrado</p>
-              <p>{profile && profile.user.address}</p>
+              <AddressTitle>Endereço cadastrado</AddressTitle>
+              <Address>{profile && profile.user.address}</Address>
             </div>
-            <EditOutlinedIcon />
+            <EditIcon />
           </ContainerAddress>
           <ContainerOrders>
             <p>Histórico de pedidos</p>
