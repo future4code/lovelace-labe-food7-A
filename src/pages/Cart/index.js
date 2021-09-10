@@ -49,7 +49,7 @@ function Cart() {
 
     const shippingPrice = cart.restaurant?.shipping;
 
-    return cartTotal + shippingPrice;
+    return (cartTotal + shippingPrice).toFixed(2);
   };
 
   const [paymentMethod, setPaymentMethod] = useState("");

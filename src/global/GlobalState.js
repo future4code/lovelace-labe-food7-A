@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import GlobalContext from "./GlobalContext";
 import api from "../config/api";
 import * as restaurantsService from "../services/restaurants";
+import { useHistory } from "react-router-dom";
 
 const GlobalState = (props) => {
   const [restaurant, setRestaurant] = useState();
@@ -14,6 +15,8 @@ const GlobalState = (props) => {
   const [orders, setOrders] = useState([]);
   const [activeOrder, setActiveOrder] = useState(null);
   const [profile, setProfile] = useState();
+
+  const history = useHistory();
 
   useEffect(() => {
     const localCart = localStorage.getItem("cartRaapi4C");
@@ -71,10 +74,11 @@ const GlobalState = (props) => {
           products: [],
           restaurant: null,
         });
+        history.push("/list");
         console.log("Deu certo", res.data);
       })
       .catch((err) => {
-        console.log("deu errado", { ...err });
+        console.log("deu errado", err, { ...err });
       });
   };
 
