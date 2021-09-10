@@ -24,7 +24,7 @@ export default function BottomMenu(props) {
 
   const handleHome = () => {
     props.clearCategory && props.clearCategory("");
-    history.push("/");
+    history.push("/list");
   };
 
   return (

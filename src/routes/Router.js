@@ -10,6 +10,8 @@ import Register from "../pages/Register";
 import RestaurantDetails from "../pages/RestaurantDetails";
 import EditProfile from "../pages/EditProfile";
 import SplashScreen from "../pages/SplashScreen/index";
+import EditAddress from '../pages/EditAddress';
+
 
 function Router() {
   return (
@@ -28,6 +30,7 @@ function Router() {
           component={RestaurantDetails}
         />
         <Route exact path="/edit/profile" component={EditProfile} />
+        <Route exact path="/edit/address" component={EditAddress} />
       </Switch>
     </BrowserRouter>
   );

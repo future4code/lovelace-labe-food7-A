@@ -12,10 +12,24 @@ import BottomMenu from "../../components/BottomMenu";
 import useRequestData from "../../hooks/useRequestData";
 import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
 import OrderCard from "../../components/OrderCard/index";
+import { useHistory } from "react-router";
 
 function Profile() {
   const profile = useRequestData("/profile");
   const history = useRequestData("/orders/history");
+  const goTo = useHistory()
+
+  const goToEditProfile = () =>{
+    goTo.push('/edit/profile')
+  }
+
+  const goToEditAddress = () =>{
+    goTo.push('/edit/address')
+  }
+
+  const goToList = () =>{
+    goTo.push('/list')
+  }
 
   const historyList =
     history &&
@@ -41,7 +55,7 @@ function Profile() {
   useProtectedPage();
   return (
     <div>
-      <Header title="Meu perfil" />
+      <Header title="Meu perfil" onClick={goToList}/>
       <ScreenContainer>
         <ContainerData>
           <ContainerPersonal>
@@ -50,7 +64,7 @@ function Profile() {
               <p>{profile && profile.user.email}</p>
               <p>{profile && profile.user.cpf}</p>
             </div>
-            <EditOutlinedIcon />
+            <EditOutlinedIcon onClick={goToEditProfile}/>
           </ContainerPersonal>
 
           <ContainerAddress>
@@ -58,7 +72,7 @@ function Profile() {
               <p>Endereço cadastrado</p>
               <p>{profile && profile.user.address}</p>
             </div>
-            <EditOutlinedIcon />
+            <EditOutlinedIcon onClick={goToEditAddress}/>
           </ContainerAddress>
           <ContainerOrders>
             <p>Histórico de pedidos</p>
