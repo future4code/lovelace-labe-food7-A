@@ -47,7 +47,10 @@ function Cart(props) {
       (prev, curr) => prev + curr.price * curr.quantity,
       0
     );
-    return cartTotal;
+
+    const shippingPrice = cart.restaurant?.shipping;
+    console.log(cartTotal, cart);
+    return cartTotal + shippingPrice;
   };
 
   const [paymentMethod, setPaymentMethod] = useState("");

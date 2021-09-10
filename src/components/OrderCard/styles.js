@@ -5,7 +5,7 @@ export const Container = styled.div`
   border: 1px solid #b8b8b8;
   margin-bottom: 10px;
   border-radius: 8px;
-  height: 130px;
+  height: 102px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,12 +19,11 @@ export const ContainerData = styled.div`
     align-self: flex-start;
     margin-left: 15px;
     margin-top: 5px;
+    font-size: 12px;
   }
 `;
 
 export const Name = styled.p`
-  flex: 1;
-  font-size: 1.3em;
   align-self: flex-start;
   margin-left: 15px;
   margin-top: 5px;
@@ -32,8 +31,6 @@ export const Name = styled.p`
 `;
 
 export const Price = styled.strong`
-  flex: 1;
-  font-size: 1.4em;
   align-self: flex-start;
   margin-left: 15px;
   margin-top: 5px;

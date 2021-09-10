@@ -104,8 +104,8 @@ export const Input = styled.input`
   width: ${({ active }) => (active ? "20px" : "24px")};
   height: ${({ active }) => (active ? "20px" : "24px")}; */
   /* &:checked:after {
-    color: red;
-  } */
+      color: red;
+    } */
 `;
 export const Button = styled.button`
   min-width: 328px;
