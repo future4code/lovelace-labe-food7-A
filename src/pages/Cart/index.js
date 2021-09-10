@@ -112,36 +112,38 @@ function Cart() {
           )}
         </RestaurantInfoContainer>
 
-        <PaymentForm onSubmit={onSubmitPaymentForm}>
-          <PaymentTitleContainer>
-            <PaymentTitle>Forma de pagamento</PaymentTitle>
-          </PaymentTitleContainer>
-          <FormGroup>
-            <Input
-              checked={paymentMethod === "money"}
-              value="money"
-              name="paymentMethod"
-              onChange={handlePaymentForm}
-              type="radio"
-              id="money"
-            />
-            <label htmlFor="money">Dinheiro</label>
-          </FormGroup>
-          <FormGroup>
-            <Input
-              checked={paymentMethod === "creditcard"}
-              value="creditcard"
-              name="paymentMethod"
-              onChange={handlePaymentForm}
-              type="radio"
-              id="creditcard"
-            />
-            <label htmlFor="creditcard">Cartão de Crédito</label>
-          </FormGroup>
-          <Button disabled={isLoading || !!activeOrder}>
-            {isLoading ? <Loader /> : "Confirmar"}
-          </Button>
-        </PaymentForm>
+        {cart.products.length > 0 && (
+          <PaymentForm onSubmit={onSubmitPaymentForm}>
+            <PaymentTitleContainer>
+              <PaymentTitle>Forma de pagamento</PaymentTitle>
+            </PaymentTitleContainer>
+            <FormGroup>
+              <Input
+                checked={paymentMethod === "money"}
+                value="money"
+                name="paymentMethod"
+                onChange={handlePaymentForm}
+                type="radio"
+                id="money"
+              />
+              <label htmlFor="money">Dinheiro</label>
+            </FormGroup>
+            <FormGroup>
+              <Input
+                checked={paymentMethod === "creditcard"}
+                value="creditcard"
+                name="paymentMethod"
+                onChange={handlePaymentForm}
+                type="radio"
+                id="creditcard"
+              />
+              <label htmlFor="creditcard">Cartão de Crédito</label>
+            </FormGroup>
+            <Button disabled={isLoading || !!activeOrder}>
+              {isLoading ? <Loader /> : "Confirmar"}
+            </Button>
+          </PaymentForm>
+        )}
       </Container>
       <BottomMenu initialValue="cart" />
     </>
