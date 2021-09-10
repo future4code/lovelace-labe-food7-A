@@ -65,7 +65,7 @@ function Cart(props) {
       paymentMethod,
     };
 
-    placeOrder(cart.restaurantId, body);
+    placeOrder(cart.restaurant?.id, body);
   };
 
   const renderCartItems = () => {
