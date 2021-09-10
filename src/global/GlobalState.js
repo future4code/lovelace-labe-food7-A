@@ -11,19 +11,18 @@ const GlobalState = (props) => {
     restaurant: null,
   });
 
-  const [setOrders] = useState([]);
+  const [orders, setOrders] = useState([]);
   const [activeOrder, setActiveOrder] = useState(null);
   const [profile, setProfile] = useState();
 
   useEffect(() => {
-    const localCart = localStorage.getItem('cartRaapi4C')
-    localCart &&
-      setCart(JSON.parse(localCart))
-  }, [])
+    const localCart = localStorage.getItem("cartRaapi4C");
+    localCart && setCart(JSON.parse(localCart));
+  }, []);
 
   useEffect(() => {
-    localStorage.setItem('cartRaapi4C', JSON.stringify(cart))
-  }, [cart])
+    localStorage.setItem("cartRaapi4C", JSON.stringify(cart));
+  }, [cart]);
 
   const addToCart = (restaurant, product, quantity = 1) => {
     const newProduct = { ...product, quantity };

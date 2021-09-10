@@ -31,8 +31,7 @@ import { useState } from "react";
 
 function Cart() {
   const {
-    states: { cart },
-    requests: { placeOrder },
+    states: { cart, profile },
     requests: { placeOrder, getProfileData },
   } = useContext(GlobalContext);
   useProtectedPage();
