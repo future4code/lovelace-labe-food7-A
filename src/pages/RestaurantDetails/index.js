@@ -46,10 +46,6 @@ function RestaurantDetails(props) {
     };
   }, {});
 
-  console.log({ categories }, Object.entries(categories));
-
-  console.log(restaurant);
-
   const renderMenu = () => {
     return Object.entries(categories).map(([category, products]) => {
       return (

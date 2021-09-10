@@ -28,10 +28,11 @@ import {
   EmptyCart,
 } from "./styles";
 import { useState } from "react";
+import Loader from "../../components/Loader";
 
 function Cart(props) {
   const {
-    states: { cart, profile },
+    states: { cart, profile, activeOrder },
     requests: { placeOrder, getProfileData },
   } = useContext(GlobalContext);
   useProtectedPage();
@@ -40,8 +41,6 @@ function Cart(props) {
     getProfileData();
   }, []);
 
-  console.log(cart.products);
-
   const handleTotal = () => {
     const cartTotal = cart.products?.reduce(
       (prev, curr) => prev + curr.price * curr.quantity,
@@ -49,14 +48,14 @@ function Cart(props) {
     );
 
     const shippingPrice = cart.restaurant?.shipping;
-    console.log(cartTotal, cart);
+
     return cartTotal + shippingPrice;
   };
 
   const [paymentMethod, setPaymentMethod] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handlePaymentForm = (e) => {
-    console.log({ target: e.target });
     setPaymentMethod(e.target.value);
   };
 
@@ -101,13 +100,16 @@ function Cart(props) {
           )}
 
           <ProductsContainer>{renderCartItems()}</ProductsContainer>
-
-          <PricesContainer>
-            <ShippingPrice>Frete R$ {cart.restaurant?.shipping}</ShippingPrice>
-            <Total>
-              <span>SUBTOTAL</span>R$ {handleTotal()}
-            </Total>
-          </PricesContainer>
+          {cart.products.length > 0 && (
+            <PricesContainer>
+              <ShippingPrice>
+                Frete R$ {cart.restaurant?.shipping}
+              </ShippingPrice>
+              <Total>
+                <span>SUBTOTAL</span>R$ {handleTotal()}
+              </Total>
+            </PricesContainer>
+          )}
         </RestaurantInfoContainer>
 
         <PaymentForm onSubmit={onSubmitPaymentForm}>
@@ -136,7 +138,9 @@ function Cart(props) {
             />
             <label htmlFor="creditcard">Cartão de Crédito</label>
           </FormGroup>
-          <Button>Confirmar</Button>
+          <Button disabled={isLoading || !!activeOrder}>
+            {isLoading ? <Loader /> : "Confirmar"}
+          </Button>
         </PaymentForm>
       </Container>
       <BottomMenu initialValue="cart" />

@@ -90,7 +90,7 @@ function Home() {
             ),
           }}
         />
-        <MenuBar setCategory={setCategory} />
+        <MenuBar setCategory={setCategory} activeCategory={category} />
         <ContainerCards>{renderRestaurantList()}</ContainerCards>
         <ActiveOrder />
 

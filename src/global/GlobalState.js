@@ -15,14 +15,13 @@ const GlobalState = (props) => {
   const [profile, setProfile] = useState();
 
   useEffect(() => {
-    const localCart = localStorage.getItem('cartRaapi4C')
-    localCart &&
-      setCart(JSON.parse(localCart))
-  }, [])
+    const localCart = localStorage.getItem("cartRaapi4C");
+    localCart && setCart(JSON.parse(localCart));
+  }, []);
 
   useEffect(() => {
-    localStorage.setItem('cartRaapi4C', JSON.stringify(cart))
-  }, [cart])
+    localStorage.setItem("cartRaapi4C", JSON.stringify(cart));
+  }, [cart]);
 
   const addToCart = (restaurant, product, quantity = 1) => {
     const newProduct = { ...product, quantity };
@@ -30,7 +29,10 @@ const GlobalState = (props) => {
     setCart((cart) => ({
       ...cart,
       restaurant,
-      products: [...cart.products, newProduct],
+      products:
+        restaurant.id === cart.restaurant?.id
+          ? [...cart.products, newProduct]
+          : [newProduct],
     }));
   };
 
@@ -64,6 +66,10 @@ const GlobalState = (props) => {
       .then((res) => {
         setOrders(res.data);
         getActiveOrder();
+        setCart({
+          products: [],
+          restaurant: null,
+        });
         console.log("Deu certo", res.data);
       })
       .catch((err) => {
