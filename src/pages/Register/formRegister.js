@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import TextField from "@material-ui/core/TextField";
 import useForm from "../../hooks/useForm";
 import { register } from "../../services/users";
-import { ContainerFormRegister } from "./styles";
+import { ContainerFormRegister, ButtonRegister } from "./styles";
 import { Button, IconButton, InputAdornment } from "@material-ui/core";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import { useHistory } from "react-router";
+import Loader from "../../components/Loader";
 
 const FormRegister = () => {
   const [form, onChange, clear] = useForm({
@@ -25,13 +26,15 @@ const FormRegister = () => {
     showPassword: false,
     showConfirmation: false,
   });
+  const [isLoading, setIsLoading] = useState(false);
 
   const onSubmitFormRegister = (event) => {
     event.preventDefault();
     if (form.password !== passwordConfirmation.confirmPassword) {
       alert("As senhas são diferentes");
     } else {
-      register(form, clear, history);
+      setIsLoading(true);
+      register(form, clear, history, setIsLoading);
     }
   };
 
@@ -153,14 +156,15 @@ const FormRegister = () => {
             ),
           }}
         />
-        <Button
+        <ButtonRegister
           fullWidth
           variant={"contained"}
           color={"primary"}
           type={"submit"}
+          disabled={isLoading}
         >
-          Criar
-        </Button>
+          {isLoading ? <Loader /> : "Criar"}
+        </ButtonRegister>
       </form>
     </ContainerFormRegister>
   );

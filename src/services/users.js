@@ -1,6 +1,6 @@
 import api from "../config/api";
 
-export const login = (body, clear, history) => {
+export const login = (body, clear, history, setIsLoading) => {
   api
     .post("/login", body)
     .then((res) => {
@@ -16,10 +16,11 @@ export const login = (body, clear, history) => {
     .catch((err) => {
       alert(err.response.data.message);
       clear();
+      setIsLoading(false);
     });
 };
 
-export const register = (body, clear, history) => {
+export const register = (body, clear, history, setIsLoading) => {
   api
     .post("/signup", body)
     .then((res) => {
@@ -30,10 +31,11 @@ export const register = (body, clear, history) => {
     .catch((err) => {
       console.log(err.response.data);
       alert(err.response.data.message);
+      setIsLoading(false);
     });
 };
 
-export const addAdress = (body, clear, history) => {
+export const addAdress = (body, clear, history, setIsLoading) => {
   api
     .put("/address", body)
     .then((res) => {
@@ -45,20 +47,20 @@ export const addAdress = (body, clear, history) => {
     .catch((err) => {
       console.log(err.response.data);
       alert("Erro no cadastro de endereço, tente novamente!!");
+      setIsLoading(false);
     });
 };
 
-export const updateProfile= (body, history, clear) =>{
+export const updateProfile = (body, history, clear) => {
   api
-.put("/profile", body)
-.then((res) => {
-  console.log(res, history, clear)
-  history.push('/')
-  clear()
-  })
-  .catch((err) =>{
-    console.log({...err})
-    alert("Erro na atualização do cadastro, tente novamente!!")
-  })
-}
-
+    .put("/profile", body)
+    .then((res) => {
+      console.log(res, history, clear);
+      history.push("/");
+      clear();
+    })
+    .catch((err) => {
+      console.log({ ...err });
+      alert("Erro na atualização do cadastro, tente novamente!!");
+    });
+};

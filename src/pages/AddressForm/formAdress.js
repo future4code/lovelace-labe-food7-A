@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import TextField from "@material-ui/core/TextField";
 import useForm from "../../hooks/useForm";
 import { addAdress } from "../../services/users";
-import { ContainerFormAdress } from "./styles";
-import { Button } from "@material-ui/core";
+import { ContainerFormAdress, ButtonAddress } from "./styles";
 import { useHistory } from "react-router";
+import Loader from "../../components/Loader";
 
 const FormAdress = () => {
   const [form, onChange, clear] = useForm({
@@ -15,10 +15,14 @@ const FormAdress = () => {
     state: "",
     complement: "",
   });
+  const [isLoading, setIsLoading] = useState(false);
 
   const history = useHistory();
+
   const onSubmitFormAdress = (event) => {
     event.preventDefault();
+    setIsLoading(true);
+
     addAdress(form, clear, history);
     console.log(addAdress);
   };
@@ -116,14 +120,15 @@ const FormAdress = () => {
             shrink: true,
           }}
         />
-        <Button
+        <ButtonAddress
           fullWidth
           variant={"contained"}
           color={"primary"}
           type={"submit"}
+          disabled={isLoading}
         >
-          Salvar
-        </Button>
+          {isLoading ? <Loader /> : "Salvar"}
+        </ButtonAddress>
       </form>
     </ContainerFormAdress>
   );

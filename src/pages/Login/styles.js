@@ -29,3 +29,9 @@ export const Logo = styled.img`
 export const Title = styled.p`
   padding: 12px 32px;
 `;
+
+export const ButtonLogin = styled(Button)`
+  &&.Mui-disabled {
+    background-color: #f3b6ac;
+  }
+`;
