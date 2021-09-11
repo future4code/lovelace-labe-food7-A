@@ -137,6 +137,13 @@ rappifour.surge.sh
 ![pg carrinho 2](https://user-images.githubusercontent.com/85313042/132930558-1f5084e7-3061-4c20-9039-182194a38128.png)
 
 
+### Página Carrinho com pedido 
+
+
+![Pg carrinho com pedido](https://user-images.githubusercontent.com/85313042/132931194-dd9787dd-ca12-4253-9e5e-7120e75c9267.jpg)
+
+
+
 
 ### Página Carrinho Vazio 
 
