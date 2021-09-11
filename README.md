@@ -1,21 +1,31 @@
 # Rappi 4
 
 ## Desenvolvedores 
+
 - Ingrid Erci Flack da Silva
+ 
 - Caíque Souto Lima
+
 - Luan Dos Santos Melo
+
 - Evaí da Silva Santos
+
 - Israel Martins Cordeiro
-- 
+
 
 ### Link Surge Para Acesso 
+
 rappifour.surge.sh
 
 
-### Tecnologias Utilizadas:
+### Tecnologias Utilizadas
+
 - ReactJS
+ 
 - Styled Components
+
 - Axios
+ 
 -Material-Ui
 
 
