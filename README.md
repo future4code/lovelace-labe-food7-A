@@ -49,7 +49,38 @@ rappifour.surge.sh
 
 - Concluído
 
-### Imagens 
+## Imagens 
+
+### Splash Screen 
+
+x-special/nautilus-clipboard
+copy
+file:///home/israel/Imagens/Splash%20Screen.png
+![Splash Screen](https://user-images.githubusercontent.com/85313042/132930180-d5e714ff-a504-4b7f-9ecd-b107849ab81d.png)
+
+
+
+### Página de Login 
+
+
+### Página de Cadastro 
+
+
+### Página de Cadastrar endereço
+
+
+### Home
+
+
+### Carrinho 
+
+
+### Perfil
+
+
+
+
+
 
 
 
