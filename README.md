@@ -112,7 +112,7 @@ rappifour.surge.sh
 
 
 
-### Card Adicionar 
+### Página Card Adicionar 
 
 
 
@@ -121,7 +121,7 @@ rappifour.surge.sh
 
 
 
-### Adiconando ao Carrinho
+### Página Adiconando ao Carrinho
 
 
 
@@ -130,7 +130,7 @@ rappifour.surge.sh
 
 
 
-### Carrinho 
+### Página Carrinho 
 
 
 
@@ -138,7 +138,7 @@ rappifour.surge.sh
 
 
 
-### Carrinho Vazio 
+### Página Carrinho Vazio 
 
 
 
@@ -147,11 +147,19 @@ rappifour.surge.sh
 
 
 
-### Perfil
+### Página Perfil
 
 
 
 ![Pg Perfil](https://user-images.githubusercontent.com/85313042/132930779-5ff70bff-0ee1-4af1-8914-d6dc373b825c.png)
+
+
+
+### Página Editar Perfil 
+
+
+![pg editar endereço](https://user-images.githubusercontent.com/85313042/132930939-b7fe71e6-f15e-4a7b-a4af-4f86e247217e.png)
+
 
 
 
