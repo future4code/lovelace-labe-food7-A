@@ -63,14 +63,15 @@ rappifour.surge.sh
 ### Página de Cadastrar endereço
 ![Pg Cadastrar endereço](https://user-images.githubusercontent.com/85313042/132930261-84742b16-decf-4ea7-a3ff-229bd2a6550c.png)
 
-### Home
+### Página Home
 ![Pg Home](https://user-images.githubusercontent.com/85313042/132930284-189d47e5-d249-42c2-8be6-ba0bf0d6faeb.png)
+
+### Página Detalhes do Restaurante
 ![Pg Restaurante Detalhes](https://user-images.githubusercontent.com/85313042/132930407-fadff5c5-7b8f-47c7-b23c-e61ca6c4221e.png)
 ![Pg Restaurante Detalhes](https://user-images.githubusercontent.com/85313042/132930437-924b555d-4f7a-4937-99a7-d101f2f54b52.png)
 
-
-
 ### Carrinho 
+
 
 
 ### Perfil
