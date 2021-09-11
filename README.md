@@ -52,25 +52,42 @@ rappifour.surge.sh
 ## Imagens 
 
 ### Splash Screen 
+
 ![Splash Screen](https://user-images.githubusercontent.com/85313042/132930180-d5e714ff-a504-4b7f-9ecd-b107849ab81d.png)
 
 ### Página de Login 
+
 ![Pg Cadastro](https://user-images.githubusercontent.com/85313042/132930238-9745a67b-9763-403e-b76e-62877f011554.png)
 
 ### Página de Cadastro 
+
 ![Pg Cadastrar](https://user-images.githubusercontent.com/85313042/132930252-75fec54e-c66f-4ba8-b5c1-4f8baef09f4d.png)
 
 ### Página de Cadastrar endereço
+
 ![Pg Cadastrar endereço](https://user-images.githubusercontent.com/85313042/132930261-84742b16-decf-4ea7-a3ff-229bd2a6550c.png)
 
 ### Página Home
+
 ![Pg Home](https://user-images.githubusercontent.com/85313042/132930284-189d47e5-d249-42c2-8be6-ba0bf0d6faeb.png)
 
 ### Página Detalhes do Restaurante
+
 ![Pg Restaurante Detalhes](https://user-images.githubusercontent.com/85313042/132930407-fadff5c5-7b8f-47c7-b23c-e61ca6c4221e.png)
+
 ![Pg Restaurante Detalhes](https://user-images.githubusercontent.com/85313042/132930437-924b555d-4f7a-4937-99a7-d101f2f54b52.png)
 
+### Card Adicionar 
+
+![pg card adicionar](https://user-images.githubusercontent.com/85313042/132930578-2d3ccf53-ef73-40fe-a253-85809e7feb1a.png)
+
+
 ### Carrinho 
+
+![pg carrinho 2](https://user-images.githubusercontent.com/85313042/132930558-1f5084e7-3061-4c20-9039-182194a38128.png)
+
+
+
 
 
 
