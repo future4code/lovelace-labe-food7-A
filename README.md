@@ -73,18 +73,31 @@ rappifour.surge.sh
 
 ### Página Detalhes do Restaurante
 
+
 ![Pg Restaurante Detalhes](https://user-images.githubusercontent.com/85313042/132930407-fadff5c5-7b8f-47c7-b23c-e61ca6c4221e.png)
 
+
 ![Pg Restaurante Detalhes](https://user-images.githubusercontent.com/85313042/132930437-924b555d-4f7a-4937-99a7-d101f2f54b52.png)
+
 
 ### Card Adicionar 
 
 ![pg card adicionar](https://user-images.githubusercontent.com/85313042/132930578-2d3ccf53-ef73-40fe-a253-85809e7feb1a.png)
 
 
+### Adiconando ao Carrinho
+
+![pg adicionar ao Carrinho](https://user-images.githubusercontent.com/85313042/132930697-befe4559-6fd3-4385-95cb-bf697788627d.png)
+
+
 ### Carrinho 
 
 ![pg carrinho 2](https://user-images.githubusercontent.com/85313042/132930558-1f5084e7-3061-4c20-9039-182194a38128.png)
+
+
+### Carrinho Vazio 
+![Pg Carrinho](https://user-images.githubusercontent.com/85313042/132930728-b7f0cd1c-c6c7-4d29-87cb-dab0acbbda6c.png)
+
 
 
 
