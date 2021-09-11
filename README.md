@@ -92,9 +92,6 @@ rappifour.surge.sh
 
 
 
-![Pg Restaurante Detalhes](https://user-images.githubusercontent.com/85313042/132930437-924b555d-4f7a-4937-99a7-d101f2f54b52.png)
-
-
 ### Card Adicionar 
 
 
