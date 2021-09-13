@@ -43,7 +43,7 @@ https://rappifour.surge.sh
 - No Carrinho ele trás, o endereço, os itens adquiridos, o valor do frete e o subtotal da compra( frete + compra), e as opções de pagamentos, após a confirmação do pedido ele trás um card com o pedido em andamento, caso o usuário não tenha nenhum pedido o carrinho mostra a mensagem de carrinho vazio.
 
 - No perfil do usuário, ele tem a opção de editar as informações de nome,email e cpf e também do endereço, e tem a opção de ver o histórico de pedidos, e caso nenhum pedido tenha sido feito é retornado uma mensagem de que o usário ainda não realizou nenhum pedido. 
-- 
+
 
 
 ### Status do Projeto
