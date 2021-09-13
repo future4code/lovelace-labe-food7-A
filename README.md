@@ -49,7 +49,7 @@ https://rappifour.surge.sh
 ### Status do Projeto
 
 - Concluído
-- 
+
 
 ## Imagens 
 
